@@ -3,7 +3,6 @@ package fr.afpa21013;
 public class BankAccount {
 
 	private int idAccount;
-	private static int cpt = 1;
 	private int agencyCode;
 	private String clientCode;
 	private double sold;
@@ -11,12 +10,12 @@ public class BankAccount {
 	private String accountType;
 
 	public BankAccount() {
-		this.setIdAccount(cpt++);
+		this.setIdAccount(idAccount);
 	}
 
 	public BankAccount(int agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
-		this.setIdAccount(cpt++);
+		this.setIdAccount(agencyCode);;
 		this.setAgencyCode(agencyCode); // Use .getAgencyCode
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
