@@ -16,7 +16,6 @@ public class BankAccount {
 	public BankAccount(int agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
 		this.setIdAccount(agencyCode);
-		;
 		this.setAgencyCode(agencyCode); // Use .getAgencyCode
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
