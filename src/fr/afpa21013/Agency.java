@@ -1,5 +1,7 @@
 package fr.afpa21013;
 
+import java.util.Random;
+
 public class Agency {
 
 	private int agencyCode;
@@ -7,14 +9,14 @@ public class Agency {
 	private String agencyName;
 
 	public Agency() {
-		this.setAgencyCode(agencyCode);
+		this.setAgencyCode();
 	}
 
-	public Agency(int agencyCode, String agencyAdress, String agencyNameString) {
+	public Agency(String agencyAdress, String agencyName) {
 		super();
-		this.setAgencyCode(agencyCode);
+		this.setAgencyCode();
 		this.setAgencyAdress(agencyAdress);
-		this.setAgencyName(agencyNameString);
+		this.setAgencyName(agencyName);
 	}
 
 	@Override
@@ -27,8 +29,9 @@ public class Agency {
 		return agencyCode;
 	}
 
-	public void setAgencyCode(int agencyCode) {
-		this.agencyCode = agencyCode;
+	public void setAgencyCode() {
+		Random rn = new Random();
+		this.agencyCode = rn.nextInt(1000);
 	}
 
 	public String getAgencyAdress() {
