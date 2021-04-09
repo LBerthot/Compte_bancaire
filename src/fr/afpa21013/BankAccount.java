@@ -15,12 +15,20 @@ public class BankAccount {
 
 	public BankAccount(int agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
-		this.setIdAccount(agencyCode);;
+		this.setIdAccount(agencyCode);
+		;
 		this.setAgencyCode(agencyCode); // Use .getAgencyCode
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
 		this.setAuthorisedOverdraft(authorisedOverdraft);
 		this.setAccountType(accountType);
+	}
+
+	@Override
+	public String toString() {
+		return "BankAccount [idAccount=" + idAccount + ", agencyCode=" + agencyCode + ", clientCode=" + clientCode
+				+ ", sold=" + sold + ", authorisedOverdraft=" + authorisedOverdraft + ", accountType=" + accountType
+				+ "]";
 	}
 
 	public int getIdAccount() {
