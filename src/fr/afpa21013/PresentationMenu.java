@@ -1,4 +1,4 @@
-package g1_compte_bancaire_ludivine_vincent;
+package fr.afpa21013;
 
 import java.io.IOException;
 import java.util.Scanner;
