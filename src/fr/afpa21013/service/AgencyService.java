@@ -32,14 +32,5 @@ public class AgencyService {
 
 		return agency;
 	}
-	
-	public static void main(String[] args) {
-		AgencyService agServe = new AgencyService();
-		Agency agencetest = agServe.createAgency();
-		Agency agencetest2 = agServe.createAgency();
-		for (Agency agency : agServe.getAgencies()) {
-			System.out.println(agency.toString());
-		}
-	}
 }
 
