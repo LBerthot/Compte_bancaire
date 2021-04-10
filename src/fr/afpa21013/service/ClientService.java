@@ -11,7 +11,7 @@ public class ClientService {
 
 	public ClientService() {
 		// empty array to start
-		this.client = new Client[0];
+		this.clients = new Client[0];
 	}
 	
 	public Client createClient() {
