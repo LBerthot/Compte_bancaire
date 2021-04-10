@@ -39,19 +39,22 @@ public class Helpers {
 		}
 	}
 	
-	// A TESTER.........
-	public static Date testDateValid(String text) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+	// pour date boucle jk date ok
+	public static Date testDateValid() {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = null;
 		while(true) {
 			 try {
-
-		            Date date = formatter.parse(text);
-		            return date;
+				 System.out.print("date de naissance : ");
+				 String text = getScanner().nextLine();
+		         date = formatter.parse(text);
+		         break;
 
 		        } catch (ParseException e) {
-		            e.printStackTrace();
+		            System.err.println("\ndate erronee. format: dd/mm/yyyy");
 		        }
 		}
+		return date;
 	}
 	
 	// array length

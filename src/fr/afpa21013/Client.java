@@ -75,8 +75,5 @@ public class Client {
 	public String toString() {
 		return "Client [idClient=" + idClient + ", nom=" + name + ", prenom=" + firstName + ", birthDate=" + birthDate
 				+ ", email=" + email + ", telephon=" + telephon + ", idAccount=" + idAccount + "]";
-	}
-	
-	
-	
+	}			
 }

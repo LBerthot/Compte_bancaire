@@ -21,8 +21,8 @@ public class ClientService {
 		String name = Helpers.getScanner().nextLine();
 		System.out.print("Prénom du client : ");
 		String firstname = Helpers.getScanner().nextLine();
-		System.out.print("date de naissance : ");
-		Date  birthDate = Helpers.testDateValid(Helpers.getScanner().nextLine());
+		//System.out.print("date de naissance : ");
+		Date  birthDate = Helpers.testDateValid();
 		System.out.print("adresse : ");
 		String adress = Helpers.getScanner().nextLine();
 		System.out.print("email : ");
@@ -62,4 +62,12 @@ public class ClientService {
 		//appel de pullClientAccount
 		//impression dans un fichier
 	}
+	
+}
+
+class test{
+	public static void main(String[] args) {
+		ClientService cliServe = new ClientService();
+		cliServe.createClient();
+	}	
 }
