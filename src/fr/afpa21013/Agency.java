@@ -49,5 +49,4 @@ public class Agency {
 	public void setAgencyName(String agencyName) {
 		this.agencyName = agencyName;
 	}
-
 }
