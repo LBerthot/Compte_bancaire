@@ -99,7 +99,6 @@ public class Client {
 		}
 		id += rand.nextInt(999999);
 		this.idClient = id;
-		System.out.println(id);
 	}
 
 	@Override
