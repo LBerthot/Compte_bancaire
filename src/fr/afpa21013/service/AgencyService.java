@@ -38,7 +38,7 @@ public class AgencyService {
 		Agency agencetest = agServe.createAgency();
 		Agency agencetest2 = agServe.createAgency();
 		for (Agency agency : agServe.getAgencies()) {
-			System.out.println(agency.getAgencyName());
+			System.out.println(agency.toString());
 		}
 	}
 }
