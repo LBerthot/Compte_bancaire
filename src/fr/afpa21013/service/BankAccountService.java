@@ -1,7 +1,6 @@
 package fr.afpa21013.service;
 
 import fr.afpa21013.BankAccount;
-import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class BankAccountService {
@@ -16,7 +15,6 @@ public class BankAccountService {
 	}
 	
 	public BankAccount createAccount() {		
-		ClientService cliServ = new ClientService();
 		String clientId; 
 		//Client client = new Client();
 		System.out.println("\n-----Création d'un compte -----\n");		
@@ -36,11 +34,11 @@ public class BankAccountService {
 		
 		BankAccount account = new BankAccount(1, clientId, 0, overdraft,accountType);
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
-		bankAccounts[bankAccounts .length-1] = account; 
+		bankAccounts[bankAccounts.length-1] = account; 
 		return account;
 	}
 	
-	private BankAccount searchAccount(String countId) {
+	public BankAccount searchAccount(String countId) {
 		if(bankAccounts.length > 0) {	
 			for(BankAccount el: bankAccounts) {				
 				if(el.getIdAccount().equals(countId)) {
