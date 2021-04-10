@@ -7,20 +7,21 @@ public class Client {
 	private String name;
 	private String firstName;
 	private Date birthDate;
+	private String adress;
 	private String email;
 	private String telephon;
-	private int idAccount;
+	private String idAccount;
 	
 	
 	
 	public Client() {	
 	}
 
-	public Client(String nom, String prenom, Date birthDate, String email, String telephon, int idAccount) {
-		super();
-		this.name = nom;
-		this.firstName = prenom;
+	public Client(String name, String firstName, String adress,Date birthDate, String email, String telephon, String idAccount) {
+		this.name = name;
+		this.firstName = firstName;
 		this.birthDate = birthDate;
+		this.adress = adress;
 		this.email = email;
 		this.telephon = telephon;
 		this.idAccount = idAccount;
@@ -46,9 +47,20 @@ public class Client {
 	public Date getBirthDate() {
 		return birthDate;
 	}
+	
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+	
+	
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -61,10 +73,11 @@ public class Client {
 	public void setTelephon(String telephon) {
 		this.telephon = telephon;
 	}
-	public int getIdAccount() {
+	public String getIdAccount() {
 		return idAccount;
 	}
-	public void setIdAccount(int idAccount) {
+	
+	public void setIdAccount(String idAccount) {
 		this.idAccount = idAccount;
 	}
 	public int getIdClient() {

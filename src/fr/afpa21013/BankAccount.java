@@ -2,7 +2,7 @@ package fr.afpa21013;
 
 public class BankAccount {
 
-	private int idAccount;
+	private String idAccount;
 	private int agencyCode;
 	private String clientCode;
 	private double sold;
@@ -10,17 +10,16 @@ public class BankAccount {
 	private String accountType;
 
 	public BankAccount() {
-		this.setIdAccount(idAccount);
+		//this.setIdAccount(idAccount);
 	}
 
 	public BankAccount(int agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
-		this.setIdAccount(agencyCode);
 		this.setAgencyCode(agencyCode); // Use .getAgencyCode
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
 		this.setAuthorisedOverdraft(authorisedOverdraft);
-		this.setAccountType(accountType);
+		this.setAccountType(accountType); 
 	}
 
 	@Override
@@ -30,12 +29,9 @@ public class BankAccount {
 				+ "]";
 	}
 
-	public int getIdAccount() {
-		return idAccount;
-	}
 
-	public void setIdAccount(int idAccount) {
-		this.idAccount = idAccount;
+	public String getIdAccount() { 
+		return idAccount;
 	}
 
 	public int getAgencyCode() {
