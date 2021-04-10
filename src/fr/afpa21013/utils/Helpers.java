@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import fr.afpa21013.Agency;
 import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
 
@@ -97,4 +98,23 @@ public class Helpers {
 		return arrA;
 	}
 
+	// array Agency length 
+		public static Agency[] redimArray(Agency[] arrA, int elementCount) {
+			int tailleNouveauTableau = (arrA.length + elementCount) < 0 ? 0 : (arrA.length + elementCount);
+			
+			Agency tmp[] = new Agency[tailleNouveauTableau];
+			int tailleRecopie = (elementCount < 0) ? (arrA.length + elementCount) : (arrA.length);
+			
+			if (tailleRecopie < 0) {
+				tailleRecopie = 0;
+			}
+			
+			for (int i = 0; i < tailleRecopie; i++) {
+				tmp[i] = arrA[i];
+			}
+			
+			arrA = tmp;
+			tmp = null;
+			return arrA;
+		}
 }
