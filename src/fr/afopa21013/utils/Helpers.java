@@ -1,10 +1,12 @@
-package fr.afpa21013;
+package fr.afopa21013.utils;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+
+import fr.afpa21013.Client;
 
 public class Helpers {
 	private static Scanner sc;

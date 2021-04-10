@@ -1,7 +1,7 @@
 package fr.afpa21013.service;
 
+import fr.afopa21013.utils.Helpers;
 import fr.afpa21013.Agency;
-import fr.afpa21013.Helpers;
 
 public class AgencyService {
 
