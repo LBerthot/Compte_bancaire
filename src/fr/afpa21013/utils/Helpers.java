@@ -1,4 +1,4 @@
-package fr.afopa21013.utils;
+package fr.afpa21013.utils;
 
 import java.io.IOException;
 import java.text.ParseException;

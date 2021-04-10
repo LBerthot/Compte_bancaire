@@ -2,9 +2,9 @@ package fr.afpa21013.service;
 
 import java.util.Date;
 
-import fr.afopa21013.utils.Helpers;
 import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
+import fr.afpa21013.utils.Helpers;
 
 public class ClientService {
 	private Client[] clients;
