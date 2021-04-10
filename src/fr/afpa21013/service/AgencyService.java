@@ -4,18 +4,17 @@ import fr.afpa21013.Agency;
 import fr.afpa21013.utils.Helpers;
 
 public class AgencyService {
-
 	private Agency agencies[];
+
+	public AgencyService() {
+		this.agencies = new Agency[0];
+	}
 
 	public Agency[] getAgencies() {
 		return agencies;
 	}
 
-	public void setAgencies(Agency agencies[]) {
-		this.agencies = agencies;
-	}
-
-	public static Agency createAgency() {
+	public Agency createAgency() {
 		System.out.println("\n-----Création d'une nouvelle agence-----\n");
 
 		System.out.print("Entrez l'adresse de la nouvelle agence : ");
@@ -24,17 +23,23 @@ public class AgencyService {
 		String agencyName = Helpers.getScanner().nextLine();
 
 		Agency agency = new Agency(agencyAdress, agencyName);
+		this.agencies = Helpers.redimArray(this.getAgencies(), 1);
+		this.agencies[this.agencies.length - 1] = agency;
 
 		Helpers.clearScreen();
-		System.out.println("\nVotre " + agency.toString()	+ " a été créée avec succès.\n");
+		System.out.println("\nVotre " + agency.toString() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 
 		return agency;
 	}
-
-	// Méthode pour test
+	
 	public static void main(String[] args) {
-		Agency agencetest = createAgency();
-		
+		AgencyService agServe = new AgencyService();
+		Agency agencetest = agServe.createAgency();
+		Agency agencetest2 = agServe.createAgency();
+		for (Agency agency : agServe.getAgencies()) {
+			System.out.println(agency.getAgencyName());
+		}
 	}
 }
+
