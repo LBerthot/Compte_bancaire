@@ -7,7 +7,7 @@ import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class ClientService {
-	private static Client[] clients;
+	public static Client[] clients;
 
 	{
 		clients = new Client[0];
@@ -44,6 +44,7 @@ public class ClientService {
 		System.out.print("telephone : ");
 		String telephon = Helpers.getScanner().nextLine();
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon, "12345678914");
+		
 		clients = Helpers.redimArray(clients, 1);		
 		clients[clients.length-1] = client;
 		System.out.println("\nVotre " + client.toString()	+ " a été créée avec succès.\n");
