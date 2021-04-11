@@ -21,40 +21,40 @@ public class MethodesMenu {
 				agServe.createAgency();
 				break;
 
-			// A faire
-			case "2":
-				Helpers.clearScreen();
-				SelectAgency();
-				break;
+//			// A faire
+//			case "2":
+//				Helpers.clearScreen();
+//				SelectAgency();
+//				break;
 
-			case "3":
+			case "2":
 				Helpers.clearScreen();
 				clServe.createClient();
 				break;
 
-			case "4":
+			case "3":
 				Helpers.clearScreen();
 				baServe.createAccount();
 				break;
 
-			case "5":
+			case "4":
 				Helpers.clearScreen();
 				//baServe.searchAccount(countId);
 				break;
 
-			case "6":
+			case "5":
 				Helpers.clearScreen();
 				searchClient();
 				break;
 
-			case "7":
+			case "6":
 				Helpers.clearScreen();
-				//clServe.displayClientCountList(client);
+				// clServe.displayClientCountList(client);
 				break;
 
-			case "8":
+			case "7":
 				Helpers.clearScreen();
-				//clServe.printClientInfo(client);
+				// clServe.printClientInfo(client);
 				break;
 
 			case "Q":

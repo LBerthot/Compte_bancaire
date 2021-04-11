@@ -22,7 +22,7 @@ public class BankAccount {
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
 		this.setAuthorisedOverdraft(authorisedOverdraft);
-		this.setAccountType(accountType); 
+		this.setAccountType(accountType);
 	}
 
 	@Override
@@ -32,8 +32,7 @@ public class BankAccount {
 				+ "]";
 	}
 
-
-	public String getIdAccount() { 
+	public String getIdAccount() {
 		return idAccount;
 	}
 

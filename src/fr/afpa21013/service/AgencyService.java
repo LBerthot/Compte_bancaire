@@ -4,14 +4,23 @@ import fr.afpa21013.Agency;
 import fr.afpa21013.utils.Helpers;
 
 public class AgencyService {
-	private Agency agencies[];
+	private static AgencyService agencyService;
+	private static Agency agencies[];
 
-	public AgencyService() {
-		this.agencies = new Agency[0];
+	{
+		System.out.println("utilisation agency service");
 	}
 
-	public Agency[] getAgencies() {
-		return agencies;
+	public AgencyService() {
+	}
+
+	public static AgencyService getAgencyService() {
+		if (agencyService == null) {
+			agencyService = new AgencyService();
+			agencies = new Agency[0];
+			System.out.println("creation agency service");
+		}
+		return agencyService;
 	}
 
 	public Agency createAgency() {
@@ -23,8 +32,8 @@ public class AgencyService {
 		String agencyName = Helpers.getScanner().nextLine();
 
 		Agency agency = new Agency(agencyAdress, agencyName);
-		this.agencies = Helpers.redimArray(this.getAgencies(), 1);
-		this.agencies[this.agencies.length - 1] = agency;
+		agencies = Helpers.redimArray(agencies, 1);
+		agencies[agencies.length - 1] = agency;
 
 		Helpers.clearScreen();
 		System.out.println("\nVotre " + agency.toString() + " a été créée avec succès.\n");
@@ -32,6 +41,24 @@ public class AgencyService {
 
 		return agency;
 	}
+
+//	public int selectAgency() {
+//		for (Agency agency : agencies) {
+//			System.out.println("Agence " + agency.getAgencyName() + ": " + agency.getAgencyCode());
+//		}
+//		System.out.print("Entrez le Code de l'agence que vous souhaitez sélectionner : ");
+//		int agencyCode = Helpers.getScanner().nextInt();
+//		while (true) {
+//			for (Agency agency : agencies) {
+//				if (agency.getAgencyCode() == agencyCode) {
+//					return agencyCode;
+//				}
+//			}
+//			System.out.println("Le code entré est invalide. Entrez un code agence existant :");
+//			agencyCode = Helpers.getScanner().nextInt();
+//		}
+//		
+//
+//	}
+
 }
-
-
