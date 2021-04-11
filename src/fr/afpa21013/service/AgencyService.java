@@ -46,20 +46,18 @@ public class AgencyService {
 		for (Agency agency : agencies) {
 			System.out.println("Agence " + agency.getAgencyName() + ": " + agency.getAgencyCode());
 		}
-		System.out.print("Entrez legacy Code de l'agence que vous souhaitez sélectionner : ");
+		System.out.print("Entrez le Code de l'agence que vous souhaitez sélectionner : ");
 		int agencyCode = Helpers.getScanner().nextInt();
-		boolean exist = false;
-		while (exist == false) {
+		while (true) {
 			for (Agency agency : agencies) {
 				if (agency.getAgencyCode() == agencyCode) {
-					exist = true;
-					continue;
+					return agencyCode;
 				}
 			}
 			System.out.println("Le code entré est invalide. Entrez un code agence existant :");
 			agencyCode = Helpers.getScanner().nextInt();
 		}
-		return agencyCode;
+		
 
 	}
 

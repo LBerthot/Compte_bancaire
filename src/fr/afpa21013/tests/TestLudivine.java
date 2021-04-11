@@ -6,7 +6,7 @@ public class TestLudivine {
 
 	public static void main(String[] args) {
 
-		AgencyService agServe = new AgencyService();
+		AgencyService agServe = AgencyService.getAgencyService();
 		agServe.createAgency();
 		agServe.createAgency();
 		agServe.selectAgency();
