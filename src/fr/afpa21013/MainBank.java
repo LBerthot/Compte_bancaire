@@ -5,7 +5,7 @@ import javax.mail.internet.AddressException;
 
 import fr.afpa21013.service.MethodesMenu;
 
-public class Main {
+public class MainBank {
 
 	public static void main(String[] args) throws AddressException, MessagingException {
 
