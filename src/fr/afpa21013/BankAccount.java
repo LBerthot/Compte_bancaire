@@ -19,6 +19,7 @@ public class BankAccount {
 
 	public BankAccount(String agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
+		this.idAccount = Helpers.SetCode(code);
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
 		this.setAuthorisedOverdraft(authorisedOverdraft);

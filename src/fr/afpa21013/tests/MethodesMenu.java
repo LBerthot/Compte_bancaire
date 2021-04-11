@@ -1,16 +1,24 @@
 package fr.afpa21013.tests;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import fr.afpa21013.service.AgencyService;
 import fr.afpa21013.service.BankAccountService;
 import fr.afpa21013.service.ClientService;
 import fr.afpa21013.utils.Helpers;
 
 public class MethodesMenu {
+	
+	
+	
 	AgencyService agServe = AgencyService.getAgencyService();
 	ClientService clServe = ClientService.getClientService();
 	BankAccountService baServe = BankAccountService.getAccountService();
+	
+	
 
-	public void start() {
+	public void start() throws AddressException, MessagingException {
 		displayMenu();
 		boolean run = true;
 		do {
@@ -29,6 +37,7 @@ public class MethodesMenu {
 			case "3":
 				Helpers.clearScreen();
 				clServe.createClient();
+				
 				break;
 
 			case "4":
@@ -52,12 +61,12 @@ public class MethodesMenu {
 
 			case "7":
 				Helpers.clearScreen();
-				// clServe.displayClientCountList(client);
+				clServe.displayClientCountList();
 				break;
 
 			case "8":
 				Helpers.clearScreen();
-				// clServe.printClientInfo(client);
+				//clServe.printClientInfo();
 				break;
 
 			case "Q":
@@ -95,7 +104,6 @@ public class MethodesMenu {
 		displayMenu();
 	}
 
-	// A voir avec les methodes
 	public void displayMenuClient() {
 		System.out.println("Choisir selon...\n\n");
 		System.out.println("1- Nom du client");

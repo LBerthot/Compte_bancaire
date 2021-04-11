@@ -1,6 +1,9 @@
- package fr.afpa21013.service;
+package fr.afpa21013.service;
 
 import java.util.Date;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
@@ -8,12 +11,12 @@ import fr.afpa21013.utils.Helpers;
 
 public class ClientService {
 
+	
 	private static ClientService clientService;
 
 	public static Client[] clients;
 
 	public ClientService() {
-		// empty array to start
 	}
 
 	// singleton
@@ -26,7 +29,7 @@ public class ClientService {
 		return clientService;
 	}
 
-	public Client createClient() {
+	public Client createClient() throws AddressException, MessagingException {
 		String name, firstName;
 		// boucle de test nom existe
 		while (true) {
@@ -50,15 +53,15 @@ public class ClientService {
 		System.out.print("telephone : ");
 		String telephon = Helpers.getScanner().nextLine();
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
-
+		MailService.javaEmail.sendEmail(client);
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;
 		System.out.println("\nVotre " + client.toString() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
+
 		return client;
 
 	}
-
 
 	public Client searchClient(String nameNrCount, String searchBy) {
 
@@ -80,8 +83,8 @@ public class ClientService {
 			} else {
 				BankAccountService bankAccount = BankAccountService.getAccountService();
 				for (Client el : clients) {
-					if (el.getIdAccount().equals(nameNrCount)) {					
-								return el;
+					if (el.getIdAccount().equals(nameNrCount)) {
+						return el;
 					}
 				}
 			} // accountId
@@ -91,37 +94,36 @@ public class ClientService {
 //
 //	listAccount = Helpers.redimArray(listAccount, 1);
 //	listAccount[listAccount.length -1] = bk;
-	
+
 	private void ClientAccountToScreen(Client client) {
 		String res = "";
-	//	BankAccount[] listAccount = new BankAccount[0];
+		// BankAccount[] listAccount = new BankAccount[0];
 //		BankAccount[] accounts = new BankAccount[0];
 		// ts tableau récupérer les comptes du client (idclient)
 		// stocker ds un tableau
 		BankAccountService bankAccountService = BankAccountService.getAccountService();
 		res = "Le client " + client.getName() + "possède\n";
-		for(BankAccount bk: BankAccountService.bankAccounts) {
-			if(bk.getIdAccount().equals(client.getIdAccount())){
-				res="Le compte " + bk.getAccountType()+ " " + bk.getIdAccount(); 
+		for (BankAccount bk : BankAccountService.bankAccounts) {
+			if (bk.getIdAccount().equals(client.getIdAccount())) {
+				res = "Le compte " + bk.getAccountType() + " " + bk.getIdAccount();
 			}
-		}  
+		}
 		System.out.println(res);
 	}
 
 	public void displayClientCountList() {// client ou id
 		// appel de pullClientAccount
 		// afficher
-		
+
 		System.out.println("---- Liste des comptes du client-----\n ");
 		System.out.println("identifiant du client ?");
 		String idCli = Helpers.getScanner().nextLine();
-		for(Client cl : clients) {
-			if(cl.getIdClient().equals(idCli)) {
+		for (Client cl : clients) {
+			if (cl.getIdClient().equals(idCli)) {
 				ClientAccountToScreen(cl);
 			}
 		}
-				
-		
+
 	}
 
 	public void printClientInfo(Client client) {

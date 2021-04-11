@@ -1,6 +1,7 @@
 package fr.afpa21013.service;
 
 import fr.afpa21013.BankAccount;
+import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class BankAccountService {
@@ -58,9 +59,15 @@ public class BankAccountService {
 		boolean overdraft = strOverdraft.equals("O") ? true : false;
 
 		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
-
+		Client client = cliServ.searchClient(clientId, "idCli");
+		client.setIdAccount(account.getIdAccount());
+		
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
 		bankAccounts[bankAccounts.length - 1] = account;
+		
+		Helpers.clearScreen();
+		System.out.println("\nVotre " + account.toString() + " a été créée avec succès.\n");
+		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return account;
 	}
 
@@ -71,6 +78,7 @@ public class BankAccountService {
 			String accountId = Helpers.getScanner().nextLine();
 			for (BankAccount el : bankAccounts) {
 				if (el.getIdAccount().equals(accountId)) {
+					System.out.println(el);
 					return el;
 				}
 			}

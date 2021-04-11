@@ -1,5 +1,8 @@
 package fr.afpa21013.tests;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import fr.afpa21013.Agency;
 import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
@@ -16,7 +19,7 @@ public class TestVincent {
 		
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AddressException, MessagingException {
 		// TODO Auto-generated method stub
 		createAgency();
 		testCreeCli();
@@ -27,7 +30,7 @@ public class TestVincent {
 		testAffiche();
 	}
 	
-	public static void testCreeCli() {
+	public static void testCreeCli() throws AddressException, MessagingException {
 		ClientService cliServe = ClientService.getClientService();// création		
 		Client c2 = cliServe.createClient();
 		//Client c3 = cliServe.createClient();
