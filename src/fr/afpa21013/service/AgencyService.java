@@ -34,7 +34,6 @@ public class AgencyService {
 		Helpers.clearScreen();
 		System.out.println("\nVotre " + agency.toString() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
-		System.out.println(agency.getAgencyCode());
 		return agency;
 	}
 

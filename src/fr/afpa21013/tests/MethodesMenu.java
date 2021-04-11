@@ -6,9 +6,9 @@ import fr.afpa21013.service.ClientService;
 import fr.afpa21013.utils.Helpers;
 
 public class MethodesMenu {
-	AgencyService agServe = new AgencyService();
-	ClientService clServe = new ClientService();
-	BankAccountService baServe = new BankAccountService();
+	AgencyService agServe = AgencyService.getAgencyService();
+	ClientService clServe = ClientService.getClientService();
+	BankAccountService baServe = BankAccountService.getAccountService();
 
 	public void start() {
 		displayMenu();
@@ -21,38 +21,37 @@ public class MethodesMenu {
 				agServe.createAgency();
 				break;
 
-//			// A faire
-//			case "2":
-//				Helpers.clearScreen();
-//				SelectAgency();
-//				break;
-
 			case "2":
 				Helpers.clearScreen();
-				clServe.createClient();
+				agServe.selectAgency();
 				break;
 
 			case "3":
 				Helpers.clearScreen();
-				baServe.createAccount();
+				clServe.createClient();
 				break;
 
 			case "4":
 				Helpers.clearScreen();
-				//baServe.searchAccount(countId);
+				baServe.createAccount();
 				break;
 
 			case "5":
 				Helpers.clearScreen();
-				searchClient();
+				baServe.searchAccount();
 				break;
 
 			case "6":
 				Helpers.clearScreen();
-				// clServe.displayClientCountList(client);
+				searchClient();
 				break;
 
 			case "7":
+				Helpers.clearScreen();
+				// clServe.displayClientCountList(client);
+				break;
+
+			case "8":
 				Helpers.clearScreen();
 				// clServe.printClientInfo(client);
 				break;
@@ -85,14 +84,6 @@ public class MethodesMenu {
 		System.out.println(
 				"-------------------------------------------------------------------------------------------------------------------------------\n");
 		System.out.print("Votre choix :");
-	}
-
-	public void SelectAgency() {
-
-		System.out.println("\n<Liste des agence existantes>");
-		System.out.println("Ici figure la liste des agences afin d'en sélectionner une");
-
-		System.out.println("\n(Appuyer sur entrer pour continuer)");
 	}
 
 	public void searchClient() {
