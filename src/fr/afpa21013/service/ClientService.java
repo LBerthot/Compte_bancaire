@@ -10,7 +10,7 @@ public class ClientService {
 
 	private static ClientService clientService;
 
-	private static Client[] clients;
+	public static Client[] clients;
 
 	public ClientService() {
 		// empty array to start

@@ -33,7 +33,11 @@ public class MethodesMenu {
 
 			case "4":
 				Helpers.clearScreen();
+				if (ClientService.clients.length > 0 && AgencyService.agencies.length >0 && BankAccountService.bankAccounts.length < 4) {
 				baServe.createAccount();
+				} else {
+					System.out.println("Les conditions de création de comptes ne sont pas respecté : \n-Une agence doit exister. \n-Un client doit exister. \n-Le nombre de compte maximum qu'un client peut possèder est de 3");
+				}
 				break;
 
 			case "5":

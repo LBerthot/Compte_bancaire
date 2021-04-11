@@ -37,7 +37,7 @@ public class BankAccountService {
 		while (true) {
 			System.out.print("Entrez le code du client : ");// verif existance client
 			clientId = Helpers.getScanner().nextLine();
-			if (cliServ.searchClient(clientId, "id") == null) {
+			if (cliServ.searchClient(clientId, "idCli") != null) {
 				break;
 			} else {
 				System.out.println("Client inexistant !\n");
