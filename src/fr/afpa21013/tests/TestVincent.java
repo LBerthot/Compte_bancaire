@@ -20,11 +20,11 @@ public class TestVincent {
 		// TODO Auto-generated method stub
 		createAgency();
 		testCreeCli();
-		searchClient();		
+		//searchClient();		
 //		testCreeCli();
-//		testCreeAccount();
+		testCreeAccount();
 //		testSearchAccount();
-
+		testAffiche();
 	}
 	
 	public static void testCreeCli() {
@@ -65,6 +65,11 @@ public class TestVincent {
 		System.out.println("id du compte ?");
 		String idCl = Helpers.getScanner().nextLine();
 		cliServe.searchClient(idCl,"idCli");
+	}
+	
+	public static void testAffiche() {
+		ClientService cliServe = ClientService.getClientService();
+		cliServe.displayClientCountList();
 	}
 }
 

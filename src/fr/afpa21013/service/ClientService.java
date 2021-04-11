@@ -1,4 +1,4 @@
-package fr.afpa21013.service;
+ package fr.afpa21013.service;
 
 import java.util.Date;
 
@@ -42,7 +42,6 @@ public class ClientService {
 			System.out.println("Client deja cree !\n");
 		}
 
-		// System.out.print("date de naissance : ");
 		Date birthDate = Helpers.testDateValid();
 		System.out.print("adresse : ");
 		String adress = Helpers.getScanner().nextLine();
@@ -59,6 +58,7 @@ public class ClientService {
 		return client;
 
 	}
+
 
 	public Client searchClient(String nameNrCount, String searchBy) {
 
@@ -88,18 +88,40 @@ public class ClientService {
 		}
 		return null;
 	}
-
-	public BankAccount[] pullClientAccount(Client client) {
-
+//
+//	listAccount = Helpers.redimArray(listAccount, 1);
+//	listAccount[listAccount.length -1] = bk;
+	
+	private void ClientAccountToScreen(Client client) {
+		String res = "";
+	//	BankAccount[] listAccount = new BankAccount[0];
 //		BankAccount[] accounts = new BankAccount[0];
 		// ts tableau récupérer les comptes du client (idclient)
 		// stocker ds un tableau
-		return null;
+		BankAccountService bankAccountService = BankAccountService.getAccountService();
+		res = "Le client " + client.getName() + "possède\n";
+		for(BankAccount bk: BankAccountService.bankAccounts) {
+			if(bk.getIdAccount().equals(client.getIdAccount())){
+				res="Le compte " + bk.getAccountType()+ " " + bk.getIdAccount(); 
+			}
+		}  
+		System.out.println(res);
 	}
 
-	public void displayClientCountList(Client client) {// client ou id
+	public void displayClientCountList() {// client ou id
 		// appel de pullClientAccount
 		// afficher
+		
+		System.out.println("---- Liste des comptes du client-----\n ");
+		System.out.println("identifiant du client ?");
+		String idCli = Helpers.getScanner().nextLine();
+		for(Client cl : clients) {
+			if(cl.getIdClient().equals(idCli)) {
+				ClientAccountToScreen(cl);
+			}
+		}
+				
+		
 	}
 
 	public void printClientInfo(Client client) {
