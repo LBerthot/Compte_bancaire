@@ -9,7 +9,7 @@ public class TestLudivine {
 		AgencyService agServe = AgencyService.getAgencyService();
 		agServe.createAgency();
 		agServe.createAgency();
-		agServe.selectAgency();
+		//agServe.selectAgency();
 //		MethodesMenu mm = new MethodesMenu();
 //		mm.start();
 

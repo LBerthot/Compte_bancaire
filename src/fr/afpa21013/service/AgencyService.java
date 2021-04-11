@@ -42,23 +42,23 @@ public class AgencyService {
 		return agency;
 	}
 
-	public int selectAgency() {
-		for (Agency agency : agencies) {
-			System.out.println("Agence " + agency.getAgencyName() + ": " + agency.getAgencyCode());
-		}
-		System.out.print("Entrez le Code de l'agence que vous souhaitez sélectionner : ");
-		int agencyCode = Helpers.getScanner().nextInt();
-		while (true) {
-			for (Agency agency : agencies) {
-				if (agency.getAgencyCode() == agencyCode) {
-					return agencyCode;
-				}
-			}
-			System.out.println("Le code entré est invalide. Entrez un code agence existant :");
-			agencyCode = Helpers.getScanner().nextInt();
-		}
-		
-
-	}
+//	public int selectAgency() {
+//		for (Agency agency : agencies) {
+//			System.out.println("Agence " + agency.getAgencyName() + ": " + agency.getAgencyCode());
+//		}
+//		System.out.print("Entrez le Code de l'agence que vous souhaitez sélectionner : ");
+//		int agencyCode = Helpers.getScanner().nextInt();
+//		while (true) {
+//			for (Agency agency : agencies) {
+//				if (agency.getAgencyCode() == agencyCode) {
+//					return agencyCode;
+//				}
+//			}
+//			System.out.println("Le code entré est invalide. Entrez un code agence existant :");
+//			agencyCode = Helpers.getScanner().nextInt();
+//		}
+//		
+//
+//	}
 
 }

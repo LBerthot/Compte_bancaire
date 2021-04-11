@@ -89,10 +89,6 @@ public class ClientService {
 		return null;
 	}
 
-	public void searchClient(int clientId) {
-		// voir retour
-	}
-
 	public BankAccount[] pullClientAccount(Client client) {
 
 //		BankAccount[] accounts = new BankAccount[0];
