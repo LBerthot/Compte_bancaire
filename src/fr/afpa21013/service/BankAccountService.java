@@ -6,12 +6,8 @@ import fr.afpa21013.utils.Helpers;
 public class BankAccountService {
 
 	private static BankAccountService bankAccountService;
-<<<<<<< Upstream, based on DevBranch
+
 	private final int limit = 11;
-	
-	public static BankAccount[] bankAccounts;
-=======
->>>>>>> 4690e0e Deletes of sysout test
 
 	public static BankAccount[] bankAccounts;
 
