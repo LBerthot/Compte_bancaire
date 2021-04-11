@@ -1,9 +1,11 @@
-package fr.afpa21013.tests;
+package fr.afpa21013;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
-public class TestLudivine {
+import fr.afpa21013.service.MethodesMenu;
+
+public class Main {
 
 	public static void main(String[] args) throws AddressException, MessagingException {
 

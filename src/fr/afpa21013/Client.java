@@ -1,9 +1,7 @@
 package fr.afpa21013;
 
-import java.net.MalformedURLException;
 import java.util.Date;
 
-import fr.afpa21013.service.MailService;
 import fr.afpa21013.utils.Helpers;
 
 public class Client {
@@ -17,7 +15,6 @@ public class Client {
 	private String email;
 	private String telephon;
 	private String idAccount;
-	
 
 	public Client() {
 
@@ -30,8 +27,7 @@ public class Client {
 		this.adress = adress;
 		this.email = email;
 		this.telephon = telephon;
-		idClient =  name.substring(0,1)+ firstName.substring(0,1) + Helpers.SetCode(limit);
-		
+		idClient = name.substring(0, 1) + firstName.substring(0, 1) + Helpers.SetCode(limit);
 	}
 
 	public String getName() {
@@ -92,10 +88,6 @@ public class Client {
 
 	public String getIdClient() {
 		return idClient;
-	}
-
-	public void setIdClient() {
-
 	}
 
 	@Override

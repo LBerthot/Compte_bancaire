@@ -7,9 +7,6 @@ import fr.afpa21013.utils.Helpers;
 public class BankAccountService {
 
 	private static BankAccountService bankAccountService;
-
-	private final int limit = 11;
-
 	public static BankAccount[] bankAccounts;
 
 	public BankAccountService() {
@@ -61,10 +58,10 @@ public class BankAccountService {
 		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
 		Client client = cliServ.searchClient(clientId, "idCli");
 		client.setIdAccount(account.getIdAccount());
-		
+
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
 		bankAccounts[bankAccounts.length - 1] = account;
-		
+
 		Helpers.clearScreen();
 		System.out.println("\nVotre " + account.toString() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");

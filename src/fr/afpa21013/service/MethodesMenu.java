@@ -1,22 +1,16 @@
-package fr.afpa21013.tests;
+package fr.afpa21013.service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
-import fr.afpa21013.service.AgencyService;
-import fr.afpa21013.service.BankAccountService;
-import fr.afpa21013.service.ClientService;
+import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class MethodesMenu {
-	
-	
-	
+
 	AgencyService agServe = AgencyService.getAgencyService();
 	ClientService clServe = ClientService.getClientService();
 	BankAccountService baServe = BankAccountService.getAccountService();
-	
-	
 
 	public void start() throws AddressException, MessagingException {
 		displayMenu();
@@ -32,15 +26,17 @@ public class MethodesMenu {
 			case "2":
 				Helpers.clearScreen();
 				clServe.createClient();
-				
+
 				break;
 
 			case "3":
 				Helpers.clearScreen();
-				if (ClientService.clients.length > 0 && AgencyService.agencies.length >0 && BankAccountService.bankAccounts.length < 4) {
-				baServe.createAccount();
+				if (ClientService.clients.length > 0 && AgencyService.agencies.length > 0
+						&& BankAccountService.bankAccounts.length < 4) {
+					baServe.createAccount();
 				} else {
-					System.out.println("Les conditions de création de comptes ne sont pas respecté : \n-Une agence doit exister. \n-Un client doit exister. \n-Le nombre de compte maximum qu'un client peut possèder est de 3");
+					System.out.println(
+							"Les conditions de création de comptes ne sont pas respecté : \n-Une agence doit exister. \n-Un client doit exister. \n-Le nombre de compte maximum qu'un client peut possèder est de 3");
 				}
 				break;
 
@@ -61,7 +57,10 @@ public class MethodesMenu {
 
 			case "7":
 				Helpers.clearScreen();
-				//clServe.printClientInfo();
+				System.out.print("Entrez l'identifiant client : ");
+				String nameNrCount = Helpers.getScanner().nextLine();
+				Client client = clServe.searchClient(nameNrCount, "idCli");
+				clServe.printClientInfo(client);
 				break;
 
 			case "Q":
@@ -107,27 +106,32 @@ public class MethodesMenu {
 
 		System.out.print("Votre choix :");
 
+		String nameNrCount = "";
 		label1: while (true) {
 			switch (Helpers.getScanner().nextLine()) {
 			case "1":
 				Helpers.clearScreen();
-				
-				//clServe.searchClient(nameNrCount, searchBy);
-				System.out.println("<Afficher selon le nom du client>");
+				System.out.print("Entrez le nom et le prénom du client (tout attaché) : ");
+				nameNrCount = Helpers.getScanner().nextLine();
+				System.out.println(clServe.searchClient(nameNrCount, "name"));
 				System.out.println("\n(Appuyer sur entrer pour retourner au menu principal)");
 				Helpers.getScanner().nextLine();
 				break label1;
 
 			case "2":
 				Helpers.clearScreen();
-				System.out.println("<Afficher selon le numero de compte>");
+				System.out.print("Entrez un numero de compte du client : ");
+				nameNrCount = Helpers.getScanner().nextLine();
+				System.out.println(clServe.searchClient(nameNrCount, "account"));
 				System.out.println("\n(Appuyer sur entrer pour retourner au menu principal)");
 				Helpers.getScanner().nextLine();
 				break label1;
 
 			case "3":
 				Helpers.clearScreen();
-				System.out.println("<Afficher selon l'identifiant client>");
+				System.out.print("Entrez l'identifiant client : ");
+				nameNrCount = Helpers.getScanner().nextLine();
+				System.out.println(clServe.searchClient(nameNrCount, "idCli"));
 				System.out.println("\n(Appuyer sur entrer pour retourner au menu principal)");
 				Helpers.getScanner().nextLine();
 				break label1;
