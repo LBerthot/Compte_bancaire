@@ -27,12 +27,7 @@ public class Client {
 		this.adress = adress;
 		this.email = email;
 		this.telephon = telephon;
-<<<<<<< Upstream, based on DevBranch
-		this.idAccount = idAccount;
 		idClient =  name.substring(0,1)+ firstName.substring(0,1) + Helpers.SetCode(limit);
-=======
-		idClient = name.substring(0, 1) + firstName.substring(0, 1) + Helpers.SetCode(limit);
->>>>>>> 24f71bd Correction for the tests
 	}
 
 	public String getName() {

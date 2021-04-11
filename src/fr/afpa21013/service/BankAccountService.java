@@ -7,8 +7,11 @@ public class BankAccountService {
 
 	private static BankAccountService bankAccountService;
 
+<<<<<<< HEAD
 	private final int limit = 11;
 
+=======
+>>>>>>> branch 'LudivineBranch' of https://github.com/LBerthot/Compte_bancaire.git
 	public static BankAccount[] bankAccounts;
 
 	public BankAccountService() {
