@@ -11,8 +11,7 @@ public class BankAccountService {
 		bankAccounts = new BankAccount[0];
 	}
 
-	public BankAccountService() {
-		
+	public BankAccountService() {		
 	}
 	
 	public BankAccount createAccount() {		

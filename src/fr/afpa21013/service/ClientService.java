@@ -98,8 +98,6 @@ class test{
 	public static void main(String[] args) {
 		ClientService cliServe = new ClientService();
 		Client c1 = cliServe.createClient();
-		Client c2 = cliServe.createClient();
-		
+		Client c2 = cliServe.createClient();		
 	}	
-
 }
