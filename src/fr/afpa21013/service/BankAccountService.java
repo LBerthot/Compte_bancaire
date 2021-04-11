@@ -1,12 +1,13 @@
 package fr.afpa21013.service;
 
 import fr.afpa21013.BankAccount;
-import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
+import fr.afpa21013.service.ClientService;
 
 public class BankAccountService {
 	
 	private static BankAccountService bankAccountService;
+	private final long limit = 100000000000l;
 	
 	public static BankAccount[] bankAccounts;
 
@@ -31,7 +32,7 @@ public class BankAccountService {
 	public BankAccount createAccount() {
 		String clientId;
 		String accountType;
-
+		//AgencyService agencyService = 
 		ClientService cliServ = ClientService.getClientService();// pour acces methode searchClient
 		// Client client = new Client();
 		System.out.println("\n-----Création d'un compte -----\n");
@@ -59,19 +60,24 @@ public class BankAccountService {
 		String strOverdraft = Helpers.getScanner().nextLine().toUpperCase();
 		boolean overdraft = strOverdraft.equals("O") ? true : false;
 
-		BankAccount account = new BankAccount(1, clientId, 0, overdraft, accountType);
+		BankAccount account = new BankAccount(account.getIdAccount(), clientId, 0, overdraft, accountType);
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
 		bankAccounts[bankAccounts.length - 1] = account;
 		return account;
 	}
 
-	public BankAccount searchAccount(String countId) {
+	public BankAccount searchAccount() {
 		if (bankAccounts.length > 0) {
+			System.out.println("\n-----Recherche d'un compte par numero -----\n");
+			System.out.println("numéro de compte ? ");// test type de compte
+			String account = Helpers.getScanner().nextLine();
 			for (BankAccount el : bankAccounts) {
 				if (el.getIdAccount().equals(countId)) {
 					return el;
 				}
 			}
+		}else {
+			System.out.println("compte inexistant !");
 		}
 		return null;
 	}
@@ -79,6 +85,7 @@ public class BankAccountService {
 	private boolean testTypeCompte(String typeAccount) {
 		return (typeAccount.equals("COURANT") ||typeAccount.equals("LIVRETA") || typeAccount.equals("PEL")); 
 	}
+
 }
 
 

@@ -1,21 +1,24 @@
 package fr.afpa21013;
 
+import fr.afpa21013.utils.Helpers;
+
 public class BankAccount {
+	
+	private final long  code = 10000000000l;
 
 	private String idAccount;
-	private int agencyCode;
+	private long agencyCode;
 	private String clientCode;
 	private double sold;
 	private boolean authorisedOverdraft;
 	private String accountType;
 
 	public BankAccount() {
-		//this.setIdAccount(idAccount);
+		this.idAccount = Long.toString(Helpers.SetCode(code));
 	}
 
 	public BankAccount(int agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
-		this.setAgencyCode(agencyCode); // Use .getAgencyCode
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);
 		this.setAuthorisedOverdraft(authorisedOverdraft);
@@ -34,12 +37,8 @@ public class BankAccount {
 		return idAccount;
 	}
 
-	public int getAgencyCode() {
+	public long getAgencyCode() {
 		return agencyCode;
-	}
-
-	public void setAgencyCode(int agencyCode) { // Use .getAgencyCode
-		this.agencyCode = agencyCode;
 	}
 
 	public double getSold() {

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.Scanner;
 
 import fr.afpa21013.Agency;
@@ -116,5 +117,10 @@ public class Helpers {
 			arrA = tmp;
 			tmp = null;
 			return arrA;
+		}
+		
+		public static long SetCode(long limit) {
+			Random rn = new Random(limit -  1);
+			return rn.nextLong();
 		}
 }

@@ -33,7 +33,7 @@ public class ClientService {
 	
 	public Client createClient() {
 		String name,firstName; 
-		System.out.println("\n-----Création d'un client -----\n");		
+		
 		//boucle de test nom existe
 		while(true) {
 			System.out.print("Nom du client : ");

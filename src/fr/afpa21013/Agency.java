@@ -1,19 +1,20 @@
 package fr.afpa21013;
 
-import java.util.Random;
+import fr.afpa21013.utils.Helpers;
 
 public class Agency {
 
-	private int agencyCode;
+	private final long limit = 1000l;
+	
+	private long agencyCode;
 	private String agencyAdress;
 	private String agencyName;
 
 	public Agency() {
-		this.setAgencyCode();
+		this.agencyCode = Helpers.SetCode(limit);
 	}
 
 	public Agency(String agencyAdress, String agencyName) {
-		this.setAgencyCode();
 		this.setAgencyAdress(agencyAdress);
 		this.setAgencyName(agencyName);
 	}
@@ -24,14 +25,10 @@ public class Agency {
 				+ "]";
 	}
 
-	public int getAgencyCode() {
+	public long getAgencyCode() {
 		return agencyCode;
 	}
 
-	public void setAgencyCode() {
-		Random rn = new Random();
-		this.agencyCode = rn.nextInt(1000);
-	}
 
 	public String getAgencyAdress() {
 		return agencyAdress;

@@ -17,7 +17,7 @@ public class TestVincent {
 		// TODO Auto-generated method stub
 		testCreeCli();
 		testCreeAccount();
-		testCreeAccount();
+		testSearchAccount();
 	}
 	
 	public static void testCreeCli() {
@@ -30,7 +30,7 @@ public class TestVincent {
 	public static void testCreeAccount() {
 		ClientService cliServe = new ClientService();
 		//if(ClientService.clients.length > 0) {
-			BankAccountService account = new BankAccountService();
+			BankAccountService account = BankAccountService.getAccountService();
 			account.createAccount();
 			for(BankAccount el : BankAccountService.bankAccounts) {
 				System.out.println(el);
@@ -39,4 +39,15 @@ public class TestVincent {
 //			System.out.println("Aucun client créé dans la base\nCommencez par en créer un!!");
 //		}		
 	}
+	public static void testSearchAccount() {
+		BankAccountService accountServ = BankAccountService.getAccountService();
+		BankAccount account = accountServ.searchAccount();
+		if(account != null) {
+			System.out.println("compte trouve "+ account);
+		}
+	}
 }
+
+
+
+
