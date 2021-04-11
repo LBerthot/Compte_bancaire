@@ -50,7 +50,7 @@ public class ClientService {
 		String email = Helpers.getScanner().nextLine();
 		System.out.print("telephone : ");
 		String telephon = Helpers.getScanner().nextLine();
-		Client client = new Client(name, firstName, adress, birthDate, email, telephon, "12345678914");
+		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
 
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;

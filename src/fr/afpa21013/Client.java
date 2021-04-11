@@ -1,12 +1,11 @@
 package fr.afpa21013;
 
 import java.util.Date;
-import java.util.Random;
 
 import fr.afpa21013.utils.Helpers;
 
 public class Client {
-	
+
 	private final int limit = 6;
 	private String idClient;
 	private String name;
@@ -18,20 +17,22 @@ public class Client {
 	private String idAccount;
 
 	public Client() {
-		
-		
+
 	}
 
-	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon,
-			String idAccount) {
+	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon) {
 		this.name = name;
 		this.firstName = firstName;
 		this.birthDate = birthDate;
 		this.adress = adress;
 		this.email = email;
 		this.telephon = telephon;
+<<<<<<< Upstream, based on DevBranch
 		this.idAccount = idAccount;
 		idClient =  name.substring(0,1)+ firstName.substring(0,1) + Helpers.SetCode(limit);
+=======
+		idClient = name.substring(0, 1) + firstName.substring(0, 1) + Helpers.SetCode(limit);
+>>>>>>> 24f71bd Correction for the tests
 	}
 
 	public String getName() {
@@ -95,7 +96,7 @@ public class Client {
 	}
 
 	public void setIdClient() {
-		
+
 	}
 
 	@Override
