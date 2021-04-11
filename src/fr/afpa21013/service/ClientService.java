@@ -12,11 +12,6 @@ public class ClientService {
 
 	private static Client[] clients;
 
-	{
-		// clients = new Client[0];
-		System.out.println("utilisation client services");
-	}
-
 	public ClientService() {
 		// empty array to start
 	}
@@ -26,15 +21,15 @@ public class ClientService {
 		if (clientService == null) {
 			clientService = new ClientService();
 			clients = new Client[0];
-			System.out.println("creation client services");
+
 		}
 		return clientService;
 	}
 
 	public Client createClient() {
-		String name,firstName; 	
-		//boucle de test nom existe
-		while(true) {
+		String name, firstName;
+		// boucle de test nom existe
+		while (true) {
 			System.out.print("Nom du client : ");
 			name = Helpers.getScanner().nextLine();
 			System.out.print("Prénom du client : ");

@@ -5,22 +5,16 @@ import fr.afpa21013.utils.Helpers;
 
 public class AgencyService {
 	private static AgencyService agencyService;
-	
-	public static Agency agencies[];
 
-	{
-		System.out.println("utilisation agency service");
-	}
+	public static Agency agencies[];
 
 	public AgencyService() {
 		agencies = new Agency[0];
 	}
-	
 
 	public static AgencyService getAgencyService() {
 		if (agencyService == null) {
 			agencyService = new AgencyService();
-			System.out.println("creation agency service");
 		}
 		return agencyService;
 	}
@@ -40,10 +34,9 @@ public class AgencyService {
 		Helpers.clearScreen();
 		System.out.println("\nVotre " + agency.toString() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
-System.out.println(agency.getAgencyCode());
+		System.out.println(agency.getAgencyCode());
 		return agency;
 	}
-	
 
 	public String selectAgency() {
 		for (Agency agency : agencies) {
@@ -59,6 +52,6 @@ System.out.println(agency.getAgencyCode());
 			}
 			System.out.println("Le code entré est invalide. Entrez un code agence existant :");
 			agencyCode = Helpers.getScanner().nextLine();
-		}		
+		}
 	}
 }

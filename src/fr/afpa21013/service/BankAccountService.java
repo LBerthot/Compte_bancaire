@@ -6,13 +6,14 @@ import fr.afpa21013.utils.Helpers;
 public class BankAccountService {
 
 	private static BankAccountService bankAccountService;
+<<<<<<< Upstream, based on DevBranch
 	private final int limit = 11;
 	
 	public static BankAccount[] bankAccounts;
+=======
+>>>>>>> 4690e0e Deletes of sysout test
 
-	{
-		System.out.println("utilisation account services");
-	}
+	public static BankAccount[] bankAccounts;
 
 	public BankAccountService() {
 	}
@@ -21,7 +22,7 @@ public class BankAccountService {
 		if (bankAccountService == null) {
 			bankAccountService = new BankAccountService();
 			bankAccounts = new BankAccount[0];
-			System.out.println("creation account services");
+
 		}
 		return bankAccountService;
 	}
@@ -29,14 +30,14 @@ public class BankAccountService {
 	public BankAccount createAccount() {
 		String clientId;
 		String accountType;
-		//AgencyService agencyService = 
+		// AgencyService agencyService =
 		ClientService cliServ = ClientService.getClientService();// pour acces methode searchClient
 		AgencyService agencyService = AgencyService.getAgencyService();
 		// Client client = new Client();
 		System.out.println("\n-----Création d'un compte -----\n");
 
 		String agencyId = agencyService.selectAgency();
-		
+
 		while (true) {
 			System.out.print("Entrez le code du client : ");// verif existance client
 			clientId = Helpers.getScanner().nextLine();
@@ -77,7 +78,7 @@ public class BankAccountService {
 					return el;
 				}
 			}
-		}else {
+		} else {
 			System.out.println("compte inexistant !");
 		}
 		return null;
@@ -86,6 +87,5 @@ public class BankAccountService {
 	private boolean testTypeCompte(String typeAccount) {
 		return (typeAccount.equals("COURANT") || typeAccount.equals("LIVRETA") || typeAccount.equals("PEL"));
 	}
-
 
 }
