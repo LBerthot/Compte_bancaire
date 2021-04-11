@@ -14,7 +14,6 @@ public class BankAccountService {
 	}
 
 	public BankAccountService() {
-		bankAccounts = new BankAccount[0];
 	}
 
 	public static BankAccountService getAccountService() {
