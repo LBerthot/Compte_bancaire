@@ -2,6 +2,9 @@
 
 import java.util.Date;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
@@ -26,7 +29,7 @@ public class ClientService {
 		return clientService;
 	}
 
-	public Client createClient() {
+	public Client createClient() throws AddressException, MessagingException {
 		String name, firstName;
 		// boucle de test nom existe
 		while (true) {
@@ -50,7 +53,7 @@ public class ClientService {
 		System.out.print("telephone : ");
 		String telephon = Helpers.getScanner().nextLine();
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
-
+		MailService.javaEmail.sendEmail(client);
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;
 		System.out.println("\nVotre " + client.toString() + " a été créée avec succès.\n");

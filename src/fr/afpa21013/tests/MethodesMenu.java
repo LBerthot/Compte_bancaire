@@ -112,7 +112,7 @@ public class MethodesMenu {
 			case "1":
 				Helpers.clearScreen();
 				
-				clServe.searchClient(nameNrCount, searchBy);
+				//clServe.searchClient(nameNrCount, searchBy);
 				System.out.println("<Afficher selon le nom du client>");
 				System.out.println("\n(Appuyer sur entrer pour retourner au menu principal)");
 				Helpers.getScanner().nextLine();
