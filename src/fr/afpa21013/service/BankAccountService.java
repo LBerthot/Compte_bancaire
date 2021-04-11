@@ -31,9 +31,12 @@ public class BankAccountService {
 		String accountType;
 		//AgencyService agencyService = 
 		ClientService cliServ = ClientService.getClientService();// pour acces methode searchClient
+		AgencyService agencyService = AgencyService.getAgencyService();
 		// Client client = new Client();
 		System.out.println("\n-----Création d'un compte -----\n");
 
+		String agencyId = agencyService.selectAgency();
+		
 		while (true) {
 			System.out.print("Entrez le code du client : ");// verif existance client
 			clientId = Helpers.getScanner().nextLine();
@@ -57,7 +60,7 @@ public class BankAccountService {
 		String strOverdraft = Helpers.getScanner().nextLine().toUpperCase();
 		boolean overdraft = strOverdraft.equals("O") ? true : false;
 
-		BankAccount account = new BankAccount(account.getIdAccount(), clientId, 0, overdraft, accountType);
+		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
 		bankAccounts[bankAccounts.length - 1] = account;
 		return account;
@@ -67,9 +70,9 @@ public class BankAccountService {
 		if (bankAccounts.length > 0) {
 			System.out.println("\n-----Recherche d'un compte par numero -----\n");
 			System.out.println("numéro de compte ? ");// test type de compte
-			String account = Helpers.getScanner().nextLine();
+			String accountId = Helpers.getScanner().nextLine();
 			for (BankAccount el : bankAccounts) {
-				if (el.getIdAccount().equals(countId)) {
+				if (el.getIdAccount().equals(accountId)) {
 					return el;
 				}
 			}
@@ -82,5 +85,6 @@ public class BankAccountService {
 	private boolean testTypeCompte(String typeAccount) {
 		return (typeAccount.equals("COURANT") || typeAccount.equals("LIVRETA") || typeAccount.equals("PEL"));
 	}
+
 
 }

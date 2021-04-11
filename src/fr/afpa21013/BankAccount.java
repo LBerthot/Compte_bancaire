@@ -4,7 +4,7 @@ import fr.afpa21013.utils.Helpers;
 
 public class BankAccount {
 	
-	private final long  code = 10000000000l;
+	private final int  code = 11;
 
 	private String idAccount;
 	private long agencyCode;
@@ -14,10 +14,10 @@ public class BankAccount {
 	private String accountType;
 
 	public BankAccount() {
-		this.idAccount = Long.toString(Helpers.SetCode(code));
+		this.idAccount = Helpers.SetCode(code);
 	}
 
-	public BankAccount(int agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
+	public BankAccount(String agencyCode, String clientCode, double sold, boolean authorisedOverdraft,
 			String accountType) {
 		this.setClientCode(clientCode); // Use .getClientCode
 		this.setSold(sold);

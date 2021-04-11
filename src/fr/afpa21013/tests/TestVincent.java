@@ -1,7 +1,9 @@
 package fr.afpa21013.tests;
 
+import fr.afpa21013.Agency;
 import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
+import fr.afpa21013.service.AgencyService;
 import fr.afpa21013.service.BankAccountService;
 import fr.afpa21013.service.ClientService;
 
@@ -15,21 +17,27 @@ public class TestVincent {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		createAgency();
 		testCreeCli();
 		testCreeAccount();
 		testSearchAccount();
 	}
 	
 	public static void testCreeCli() {
-		ClientService cliServe = ClientService.getClientService();// création
-		Client c1 = cliServe.createClient();
+		ClientService cliServe = ClientService.getClientService();// création		
 		Client c2 = cliServe.createClient();
 		
 	}
 	
+	public static void createAgency() {
+		AgencyService agencyServ = AgencyService.getAgencyService();
+		Agency  agen = agencyServ.createAgency();
+	}
+	
+	
 	public static void testCreeAccount() {
-		ClientService cliServe = new ClientService();
-		//if(ClientService.clients.length > 0) {
+		ClientService cliServe = ClientService.getClientService();
+		//if(ClientService.clients.length > 0 && AgencyService.agencies.length >0) {
 			BankAccountService account = BankAccountService.getAccountService();
 			account.createAccount();
 			for(BankAccount el : BankAccountService.bankAccounts) {

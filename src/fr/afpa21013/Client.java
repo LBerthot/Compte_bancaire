@@ -3,7 +3,11 @@ package fr.afpa21013;
 import java.util.Date;
 import java.util.Random;
 
+import fr.afpa21013.utils.Helpers;
+
 public class Client {
+	
+	private final int limit = 6;
 	private String idClient;
 	private String name;
 	private String firstName;
@@ -14,12 +18,12 @@ public class Client {
 	private String idAccount;
 
 	public Client() {
-		this.setIdClient();
+		
+		
 	}
 
 	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon,
 			String idAccount) {
-		this.setIdClient();
 		this.name = name;
 		this.firstName = firstName;
 		this.birthDate = birthDate;
@@ -27,6 +31,7 @@ public class Client {
 		this.email = email;
 		this.telephon = telephon;
 		this.idAccount = idAccount;
+		idClient =  name.substring(0,1)+ name.substring(1,2) + Helpers.SetCode(limit);
 	}
 
 	public String getName() {
@@ -90,15 +95,7 @@ public class Client {
 	}
 
 	public void setIdClient() {
-		Random rand = new Random();
-		String id = "";
-		id = "";
-		for (int j = 0; j < 2; j++) {
-			char c = (char) (rand.nextInt(26) + 65);
-			id += c;
-		}
-		id += rand.nextInt(999999);
-		this.idClient = id;
+		
 	}
 
 	@Override

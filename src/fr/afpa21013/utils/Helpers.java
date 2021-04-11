@@ -12,6 +12,15 @@ import fr.afpa21013.BankAccount;
 import fr.afpa21013.Client;
 
 public class Helpers {
+	
+	private static String[] codes= new String[0];
+	
+	{
+		codes = new String[0];
+		System.out.println("cree helper");
+	}
+	
+	
 	private static Scanner sc;
 
 	static {
@@ -70,7 +79,6 @@ public class Helpers {
 		if (tailleRecopie < 0) {
 			tailleRecopie = 0;
 		}
-
 		for (int i = 0; i < tailleRecopie; i++) {
 			tmp[i] = arrA[i];
 		}
@@ -119,8 +127,57 @@ public class Helpers {
 			return arrA;
 		}
 		
-		public static long SetCode(long limit) {
-			Random rn = new Random(limit -  1);
-			return rn.nextLong();
+		public static String[] redimArray(String[] arrA, int elementCount) {
+			int tailleNouveauTableau = (arrA.length + elementCount) < 0 ? 0 : (arrA.length + elementCount);
+			
+			String tmp[] = new String[tailleNouveauTableau];
+			int tailleRecopie = (elementCount < 0) ? (arrA.length + elementCount) : (arrA.length);
+			
+			if (tailleRecopie < 0) {
+				tailleRecopie = 0;
+			}
+			
+			for (int i = 0; i < tailleRecopie; i++) {
+				tmp[i] = arrA[i];
+			}
+			
+			arrA = tmp;
+			tmp = null;
+			return arrA;
+		}
+		
+		
+		public static String SetCode(int limit) {
+			
+			String numb;
+			label1: while(true) {
+				numb = generatnum(limit);
+				if(codes.length>0) {
+					for(String el: codes) {
+						if(el.equals(numb)) {
+							continue;
+						}else {
+							break label1;
+						}
+					}	
+				}else {
+					break label1;
+				}
+			}
+			codes = redimArray(codes,1);
+			codes[codes.length-1]= numb;
+			return numb;
+		}
+		
+		private static String generatnum(int num) {
+			Random rn;
+			int numb=0;
+			rn = new Random();
+			String res="";
+			for(int i =0; i< num;i++) {
+				numb = rn.nextInt(10);			
+				res += String.valueOf(numb);
+			}
+			return res;
 		}
 }
