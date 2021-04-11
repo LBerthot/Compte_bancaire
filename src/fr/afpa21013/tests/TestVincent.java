@@ -6,6 +6,7 @@ import fr.afpa21013.Client;
 import fr.afpa21013.service.AgencyService;
 import fr.afpa21013.service.BankAccountService;
 import fr.afpa21013.service.ClientService;
+import fr.afpa21013.utils.Helpers;
 
 
 public class TestVincent {	
@@ -19,13 +20,17 @@ public class TestVincent {
 		// TODO Auto-generated method stub
 		createAgency();
 		testCreeCli();
-		testCreeAccount();
-		testSearchAccount();
+		searchClient();		
+//		testCreeCli();
+//		testCreeAccount();
+//		testSearchAccount();
+
 	}
 	
 	public static void testCreeCli() {
 		ClientService cliServe = ClientService.getClientService();// création		
 		Client c2 = cliServe.createClient();
+		//Client c3 = cliServe.createClient();
 		
 	}
 	
@@ -53,6 +58,13 @@ public class TestVincent {
 		if(account != null) {
 			System.out.println("compte trouve "+ account);
 		}
+	}
+	
+	public static void searchClient() {
+		ClientService cliServe = ClientService.getClientService();
+		System.out.println("id du compte ?");
+		String idCl = Helpers.getScanner().nextLine();
+		cliServe.searchClient(idCl,"idCli");
 	}
 }
 

@@ -6,7 +6,7 @@ import fr.afpa21013.utils.Helpers;
 public class BankAccountService {
 
 	private static BankAccountService bankAccountService;
-	private final long limit = 100000000000l;
+	private final int limit = 11;
 	
 	public static BankAccount[] bankAccounts;
 
@@ -61,6 +61,7 @@ public class BankAccountService {
 		boolean overdraft = strOverdraft.equals("O") ? true : false;
 
 		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
+
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
 		bankAccounts[bankAccounts.length - 1] = account;
 		return account;

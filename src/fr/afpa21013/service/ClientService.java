@@ -76,13 +76,19 @@ public class ClientService {
 						return el;
 					}
 				}
-			} else if (searchBy.equals("id")) {
+			} else if (searchBy.equals("idCli")) {
 				for (Client el : clients) {
 					if (el.getIdClient().equals(nameNrCount)) {
 						return el;
 					}
 				}
 			} else {
+				BankAccountService bankAccount = BankAccountService.getAccountService();
+				for (Client el : clients) {
+					if (el.getIdAccount().equals(nameNrCount)) {					
+								return el;
+					}
+				}
 			} // accountId
 		}
 		return null;

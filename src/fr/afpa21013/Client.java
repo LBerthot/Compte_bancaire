@@ -31,7 +31,7 @@ public class Client {
 		this.email = email;
 		this.telephon = telephon;
 		this.idAccount = idAccount;
-		idClient =  name.substring(0,1)+ name.substring(1,2) + Helpers.SetCode(limit);
+		idClient =  name.substring(0,1)+ firstName.substring(0,1) + Helpers.SetCode(limit);
 	}
 
 	public String getName() {
