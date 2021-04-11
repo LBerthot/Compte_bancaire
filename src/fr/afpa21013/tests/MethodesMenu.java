@@ -39,7 +39,7 @@ public class MethodesMenu {
 
 			case "5":
 				Helpers.clearScreen();
-				//baServe.searchAccount(countId);
+				// baServe.searchAccount(countId);
 				break;
 
 			case "6":
@@ -49,12 +49,12 @@ public class MethodesMenu {
 
 			case "7":
 				Helpers.clearScreen();
-				//clServe.displayClientCountList(client);
+				// clServe.displayClientCountList(client);
 				break;
 
 			case "8":
 				Helpers.clearScreen();
-				//clServe.printClientInfo(client);
+				// clServe.printClientInfo(client);
 				break;
 
 			case "Q":

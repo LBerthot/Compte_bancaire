@@ -1,33 +1,31 @@
 package fr.afpa21013.service;
 
 import fr.afpa21013.BankAccount;
-import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class BankAccountService {
-	
+
 	private static BankAccountService bankAccountService;
-	
+
 	public static BankAccount[] bankAccounts;
 
 	{
-		System.out.println("utilisation account services");	
+		System.out.println("utilisation account services");
 	}
 
-	
 	public BankAccountService() {
 		bankAccounts = new BankAccount[0];
 	}
 
 	public static BankAccountService getAccountService() {
-		if(bankAccountService == null) {
+		if (bankAccountService == null) {
 			bankAccountService = new BankAccountService();
 			bankAccounts = new BankAccount[0];
 			System.out.println("creation account services");
 		}
 		return bankAccountService;
 	}
-	
+
 	public BankAccount createAccount() {
 		String clientId;
 		String accountType;
@@ -35,23 +33,23 @@ public class BankAccountService {
 		ClientService cliServ = ClientService.getClientService();// pour acces methode searchClient
 		// Client client = new Client();
 		System.out.println("\n-----Création d'un compte -----\n");
-		
+
 		while (true) {
-			System.out.print("Entrez le code du client : ");//verif existance client
+			System.out.print("Entrez le code du client : ");// verif existance client
 			clientId = Helpers.getScanner().nextLine();
-			if(cliServ.searchClient(clientId, "id")==null) {
+			if (cliServ.searchClient(clientId, "id") == null) {
 				break;
-			}else {
+			} else {
 				System.out.println("Client inexistant !\n");
 			}
-				
+
 		}
-		while(true) {
+		while (true) {
 			System.out.println("Quel compte voulez vous créer : ");// test type de compte
-			accountType = Helpers.getScanner().nextLine().toUpperCase();	
-			if(testTypeCompte(accountType)) {
+			accountType = Helpers.getScanner().nextLine().toUpperCase();
+			if (testTypeCompte(accountType)) {
 				break;
-			} 
+			}
 			System.out.println("Ce type de compte est inexistant..");
 		}
 
@@ -75,10 +73,8 @@ public class BankAccountService {
 		}
 		return null;
 	}
-	
+
 	private boolean testTypeCompte(String typeAccount) {
-		return (typeAccount.equals("COURANT") ||typeAccount.equals("LIVRETA") || typeAccount.equals("PEL")); 
+		return (typeAccount.equals("COURANT") || typeAccount.equals("LIVRETA") || typeAccount.equals("PEL"));
 	}
 }
-
-
