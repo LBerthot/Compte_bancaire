@@ -7,15 +7,28 @@ import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class ClientService {
-	public static Client[] clients;
+	
+	private static ClientService clientService; 
+	
+	private static Client[] clients;
 
 	{
-		clients = new Client[0];
+		//clients = new Client[0];
+		System.out.println("utilisation client services");
+	}
+
+	public ClientService() {
+		// empty array to start		
 	}
 	
-	public ClientService() {
-		// empty array to start
-		
+	 // singleton
+	public static ClientService getClientService() {
+		if(clientService == null) {
+			clientService = new ClientService();
+			clients = new Client[0];
+			System.out.println("creation client services");
+		}
+		return clientService;
 	}
 	
 	public Client createClient() {
@@ -30,8 +43,8 @@ public class ClientService {
 			if(this.searchClient(name+firstName, "name") == null) {				
 				break;
 			}
-			name = "";
-			firstName ="";
+//			name = "";
+//			firstName ="";
 			System.out.println("Client deja cree !\n");
 		}
 		
@@ -64,9 +77,13 @@ public class ClientService {
 						return el;
 					}
 				}				
-			}else if(searchBy.equals("compte")) {
-				
-			}
+			}else if(searchBy.equals("id")) {
+				for(Client el: clients) {				
+					if(el.getIdClient().equals(nameNrCount)) {
+						return el;
+					}
+				}			
+			}else {}//accountId
 		}
 		return null;
 	}

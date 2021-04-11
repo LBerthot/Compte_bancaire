@@ -1,40 +1,63 @@
 package fr.afpa21013.service;
 
 import fr.afpa21013.BankAccount;
+import fr.afpa21013.Client;
 import fr.afpa21013.utils.Helpers;
 
 public class BankAccountService {
-	private static BankAccount[] bankAccounts;
+	
+	private static BankAccountService bankAccountService;
+	
+	public static BankAccount[] bankAccounts;
 
 	{
+		System.out.println("utilisation account services");	
+	}
+
+	
+	public BankAccountService() {
 		bankAccounts = new BankAccount[0];
 	}
 
-<<<<<<< HEAD
-	public BankAccountService() {		
-=======
-	public BankAccountService() {
-
->>>>>>> branch 'DevBranch' of https://github.com/vlaboure/comptesBancaires.git
+	public static BankAccountService getAccountService() {
+		if(bankAccountService == null) {
+			bankAccountService = new BankAccountService();
+			bankAccounts = new BankAccount[0];
+			System.out.println("creation account services");
+		}
+		return bankAccountService;
 	}
-
+	
 	public BankAccount createAccount() {
 		String clientId;
+		String accountType;
+
+		ClientService cliServ = ClientService.getClientService();// pour acces methode searchClient
 		// Client client = new Client();
 		System.out.println("\n-----Création d'un compte -----\n");
-		System.out.println("Entrez d'abbord le numero de compte du client");
+		
 		while (true) {
-			System.out.print("Entrez le code du client : ");
+			System.out.print("Entrez le code du client : ");//verif existance client
 			clientId = Helpers.getScanner().nextLine();
-			if (this.searchAccount(clientId) == null) {
+			if(cliServ.searchClient(clientId, "id")==null) {
 				break;
+			}else {
+				System.out.println("Client inexistant !\n");
 			}
+				
 		}
-		System.out.println("Quel compte voulez vous créer : ");
-		String accountType = Helpers.getScanner().nextLine();
+		while(true) {
+			System.out.println("Quel compte voulez vous créer : ");// test type de compte
+			accountType = Helpers.getScanner().nextLine().toUpperCase();	
+			if(testTypeCompte(accountType)) {
+				break;
+			} 
+			System.out.println("Ce type de compte est inexistant..");
+		}
+
 		System.out.println("Découver autorisé : o/n ");
 		String strOverdraft = Helpers.getScanner().nextLine().toUpperCase();
-		boolean overdraft = strOverdraft == "O" ? true : false;
+		boolean overdraft = strOverdraft.equals("O") ? true : false;
 
 		BankAccount account = new BankAccount(1, clientId, 0, overdraft, accountType);
 		bankAccounts = Helpers.redimArray(bankAccounts, 1);
@@ -52,5 +75,10 @@ public class BankAccountService {
 		}
 		return null;
 	}
-
+	
+	private boolean testTypeCompte(String typeAccount) {
+		return (typeAccount.equals("COURANT") ||typeAccount.equals("LIVRETA") || typeAccount.equals("PEL")); 
+	}
 }
+
+
