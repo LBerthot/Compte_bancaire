@@ -31,16 +31,11 @@ public class MethodesMenu {
 
 			case "2":
 				Helpers.clearScreen();
-				agServe.selectAgency();
-				break;
-
-			case "3":
-				Helpers.clearScreen();
 				clServe.createClient();
 				
 				break;
 
-			case "4":
+			case "3":
 				Helpers.clearScreen();
 				if (ClientService.clients.length > 0 && AgencyService.agencies.length >0 && BankAccountService.bankAccounts.length < 4) {
 				baServe.createAccount();
@@ -49,22 +44,22 @@ public class MethodesMenu {
 				}
 				break;
 
-			case "5":
+			case "4":
 				Helpers.clearScreen();
 				baServe.searchAccount();
 				break;
 
-			case "6":
+			case "5":
 				Helpers.clearScreen();
 				searchClient();
 				break;
 
-			case "7":
+			case "6":
 				Helpers.clearScreen();
 				clServe.displayClientCountList();
 				break;
 
-			case "8":
+			case "7":
 				Helpers.clearScreen();
 				//clServe.printClientInfo();
 				break;
@@ -86,13 +81,12 @@ public class MethodesMenu {
 		System.out.println(
 				"------------------------------------------------MENU DE GESTION DE LA BANQUE CDA------------------------------------------------\n");
 		System.out.println("1- Créer une agence");
-		System.out.println("2- Sélectionner une agence");
-		System.out.println("3- Créer un client");
-		System.out.println("4- Créer un compte bancaire");
-		System.out.println("5- Rechercher un compte (par numéro de compte)");
-		System.out.println("6- Rechercher un client...");
-		System.out.println("7- Affichier la liste des commptes d'un client (par identifiant)");
-		System.out.println("8- Imprimer les infos d'un client (par identifiant)");
+		System.out.println("2- Créer un client");
+		System.out.println("3- Créer un compte bancaire");
+		System.out.println("4- Rechercher un compte (par numéro de compte)");
+		System.out.println("5- Rechercher un client...");
+		System.out.println("6- Affichier la liste des commptes d'un client (par identifiant)");
+		System.out.println("7- Imprimer les infos d'un client (par identifiant)");
 		System.out.println("\nQ- Quitter\n");
 		System.out.println(
 				"-------------------------------------------------------------------------------------------------------------------------------\n");
@@ -117,6 +111,8 @@ public class MethodesMenu {
 			switch (Helpers.getScanner().nextLine()) {
 			case "1":
 				Helpers.clearScreen();
+				
+				clServe.searchClient(nameNrCount, searchBy);
 				System.out.println("<Afficher selon le nom du client>");
 				System.out.println("\n(Appuyer sur entrer pour retourner au menu principal)");
 				Helpers.getScanner().nextLine();
