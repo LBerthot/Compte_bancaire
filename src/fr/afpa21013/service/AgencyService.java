@@ -32,7 +32,7 @@ public class AgencyService {
 		agencies[agencies.length - 1] = agency;
 
 		Helpers.clearScreen();
-		System.out.println("\nVotre " + agency.toString() + " a été créée avec succès.\n");
+		System.out.println("\nL'agence " + agency.getAgencyName() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return agency;
 	}
@@ -41,11 +41,12 @@ public class AgencyService {
 		for (Agency agency : agencies) {
 			System.out.println("Agence " + agency.getAgencyName() + ": " + agency.getAgencyCode());
 		}
-		System.out.print("Entrez le Code de l'agence que vous souhaitez sélectionner : ");
+		System.out.print("\nEntrez le Code de l'agence que vous souhaitez sélectionner : ");
 		String agencyCode = Helpers.getScanner().nextLine();
 		while (true) {
 			for (Agency agency : agencies) {
 				if (agency.getAgencyCode().equals(agencyCode)) {
+					System.out.println("L'agence " + agency.getAgencyName() + "a été sélectionnée.");
 					return agencyCode;
 				}
 			}

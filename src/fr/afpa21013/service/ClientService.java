@@ -39,8 +39,6 @@ public class ClientService {
 			if (this.searchClient(name + firstName, "name") == null) {
 				break;
 			}
-//			name = "";
-//			firstName ="";
 			System.out.println("Client deja cree !\n");
 		}
 
@@ -52,13 +50,15 @@ public class ClientService {
 		System.out.print("telephone : ");
 		String telephon = Helpers.getScanner().nextLine();
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
+		
 		// MailService.javaEmail.sendEmail(client);
+		
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;
-		System.out.println("\nVotre " + client.toString() + " a été créée avec succès.\n");
+		System.out.println("\nLe client " + client.getName() + " " +client.getFirstName() + " a été créée avec succès.\n");
+		System.out.println("\nLa fonctionnalité d'envoie de mail étant momentanément indisponible, vous devez absolument noter votre identifiant client : " + client.getIdClient());
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return client;
-
 	}
 
 	public Client searchClient(String nameNrCount, String searchBy) {
@@ -126,11 +126,7 @@ public class ClientService {
 	}
 
 	public void printClientInfo(Client client) {
-		System.out.println("		Fiche Client\n");
-		System.out.println("Numéro client : " + client.getIdClient());
-		System.out.println("Nom : " + client.getName());
-		System.out.println("Prénom : " + client.getFirstName());
-		System.out.println("Date de naissance : " + client.getBirthDate());
+		System.out.println(client);
 		System.out.println("\n---- Liste des comptes du client-----\n ");
 		for (Client cl : clients) {
 			if (cl.getIdClient().equals(client.getIdClient())) {

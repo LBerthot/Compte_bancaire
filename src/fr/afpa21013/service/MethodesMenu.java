@@ -26,7 +26,6 @@ public class MethodesMenu {
 			case "2":
 				Helpers.clearScreen();
 				clServe.createClient();
-
 				break;
 
 			case "3":

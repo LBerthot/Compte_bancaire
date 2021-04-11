@@ -43,7 +43,7 @@ public class BankAccountService {
 
 		}
 		while (true) {
-			System.out.println("Quel compte voulez vous créer : ");// test type de compte
+			System.out.println ("Quel compte voulez vous créer (courant/livretA/pel : ");
 			accountType = Helpers.getScanner().nextLine().toUpperCase();
 			if (testTypeCompte(accountType)) {
 				break;
@@ -63,7 +63,7 @@ public class BankAccountService {
 		bankAccounts[bankAccounts.length - 1] = account;
 
 		Helpers.clearScreen();
-		System.out.println("\nVotre " + account.toString() + " a été créée avec succès.\n");
+		System.out.println("\nLe compte " + account.getAccountType() + " numéro "+ account.getIdAccount() + " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return account;
 	}
@@ -75,10 +75,10 @@ public class BankAccountService {
 			String accountId = Helpers.getScanner().nextLine();
 			for (BankAccount el : bankAccounts) {
 				if (el.getIdAccount().equals(accountId)) {
-					System.out.println(el);
+					System.out.println("Le compte " + el.getAccountType() + " numéro " + el.getIdAccount() + " a un solde de " + el.getSold());
 					return el;
 				}
-			}
+			}System.out.println("Numero de compte invalide !");
 		} else {
 			System.out.println("compte inexistant !");
 		}
