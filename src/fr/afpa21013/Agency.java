@@ -13,7 +13,6 @@ public class Agency {
 	}
 
 	public Agency(String agencyAdress, String agencyName) {
-		super();
 		this.setAgencyCode();
 		this.setAgencyAdress(agencyAdress);
 		this.setAgencyName(agencyName);
@@ -49,5 +48,4 @@ public class Agency {
 	public void setAgencyName(String agencyName) {
 		this.agencyName = agencyName;
 	}
-
 }
