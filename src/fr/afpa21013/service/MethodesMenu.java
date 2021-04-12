@@ -65,7 +65,7 @@ public class MethodesMenu {
 				System.out.print("\nSouhaitez-vous imprimer le récapitulatif ? (o/n)");
 				String print = Helpers.getScanner().nextLine().toUpperCase();
 				if (print.equals("O")) {
-					clServe.printClientInfo();
+					clServe.printClientInfo(clientInfo,client);
 				}
 				break;
 

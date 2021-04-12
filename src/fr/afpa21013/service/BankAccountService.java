@@ -8,6 +8,7 @@ public class BankAccountService {
 
 	private static BankAccountService bankAccountService;
 	public static BankAccount[] bankAccounts;
+	private int[] arrCpteur = new int[3];
 
 	public BankAccountService() {
 	}
@@ -32,7 +33,6 @@ public class BankAccountService {
 		System.out.println("\n-----Création d'un compte -----\n");
 
 		String agencyId = agencyService.selectAgency();
-
 		while (true) {
 			System.out.print("Entrez le code du client : ");// verif existance client
 			clientId = Helpers.getScanner().nextLine();
@@ -43,13 +43,18 @@ public class BankAccountService {
 			}
 
 		}
+		//boolean notOver = true;
 		while (true) {
 			System.out.println ("Quel compte voulez vous créer (courant/livretA/pel : ");
 			accountType = Helpers.getScanner().nextLine().toUpperCase();
-			if (testTypeCompte(accountType) && testNbCpt(clientId,accountType)) {
+			//notOver = testNbCpt(clientId,accountType,arrCpteur);
+			if (testTypeCompte(accountType)) {
 				break;
 			}
 			System.out.println("Ce type de compte est inexistant ou compte dépassant la limite autorisée ..");
+//			if(arrCpteur[0] > 2) {arrCpteur[0] = 0;}
+//			if(arrCpteur[1] > 0) {arrCpteur[1] = 0;}
+//			if(arrCpteur[2] > 0) {arrCpteur[2] = 0;}
 		}
 		if(!(accountType.equals("PEL") || accountType.equals("LIVRETA"))) {
 			System.out.println("Découver autorisé : o/n ");
@@ -58,7 +63,8 @@ public class BankAccountService {
 		}
 
 
-		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
+		
+		BankAccount account = new BankAccount(agencyId, clientId, overdraft, accountType);
 		Client client = cliServ.searchClient(clientId, "idCli");
 		client.setIdAccount(account.getIdAccount());
 
@@ -92,18 +98,21 @@ public class BankAccountService {
 		return (typeAccount.equals("COURANT") || typeAccount.equals("LIVRETA") || typeAccount.equals("PEL"));
 	}
 
-	private boolean testNbCpt(String idCli,String typeCpt) {		
-		int nbCpt,nbCptCourant,nbLivretA;
-		nbCpt = nbCptCourant = nbLivretA =0;
+	private boolean testNbCpt(String idCli,String typeCpt,int[]arrCpt) {		
+		
 		for(BankAccount cont: bankAccounts) {
 			if(cont.getClientCode().equals(idCli)) {
-				if(typeCpt.equals("COURANT")) {
-					nbCptCourant++;	
-				} else if(typeCpt.equals("PEL"))
-				{nbCpt++;}else {nbLivretA++;}
-				
+				if(typeCpt.equals("COURANT")) {					
+						arrCpt[0]++;
+					} else if(typeCpt.equals("PEL"))
+					{	
+						arrCpt[1]++;						
+					}else if(typeCpt.equals("LIVRETA")){
+						arrCpt[2]++;						
+					}								
 			}
 		}
-		return !(nbLivretA >= 1 && typeCpt.equals("LIVRETA") || nbCpt >= 1 && typeCpt.equals("PEL") || typeCpt.equals("COURANT") && nbCptCourant >= 3);
+		return !(arrCpt[2] < 1 || typeCpt.equals("LIVRETA") || arrCpt[1] > 1 && typeCpt.equals("PEL") || 
+				typeCpt.equals("COURANT") && arrCpt[0] > 3);
 	}
 }

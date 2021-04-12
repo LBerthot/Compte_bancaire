@@ -1,5 +1,8 @@
 package fr.afpa21013.service;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.MalformedURLException;
 import java.util.Date;
 
@@ -109,8 +112,8 @@ public class ClientService {
 		for (BankAccount bk : BankAccountService.bankAccounts) {
 			if (bk.getClientCode().equals(client.getIdClient())) {
 				smiley = bk.getSold() > 0 ? ":-)" : bk.getSold() == 0 ? ":-/" : ":-(";
-				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() + "				" + bk.getSold()
-						+ "				" + smiley + "\n";
+				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() + "				" +
+				bk.getSold() + "				" + smiley + "\n";
 			}
 		}
 		System.out.println(res);
@@ -142,7 +145,17 @@ public class ClientService {
 		}
 		return res;
 	}
-	public void printClientInfo() {
+	public void printClientInfo(String clientInfos, Client client) {
 		// impression dans un fichier
+		String location = "./countinfos";
+		try {
+			PrintWriter fichier = new PrintWriter( new FileWriter(location+"/"+client.getName()+"."+ client.getIdClient()+".txt"));
+			fichier.print(clientInfos);
+			fichier.close();
+			System.out.println("fichier correctement créé");
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		
 	}
 }
