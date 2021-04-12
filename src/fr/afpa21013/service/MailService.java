@@ -21,7 +21,6 @@ import fr.afpa21013.Client;
 public class MailService {
 	private Session mailSession;
 	private Properties emailProperties;
-	//public static MailService javaEmail;
 
 	public MailService() throws MalformedURLException {
 
@@ -29,8 +28,6 @@ public class MailService {
 		URL[] urls = { file.toURI().toURL() };
 		ClassLoader loader = new URLClassLoader(urls);
 		ResourceBundle bundle = ResourceBundle.getBundle("bank-config", Locale.getDefault(), loader);
-
-		// ResourceBundle bundle = ResourceBundle.getBundle("baseName");
 
 		this.emailProperties = System.getProperties();
 
@@ -56,7 +53,6 @@ public class MailService {
 		String[] toEmails = { c.getEmail() };
 
 		String emailSubject = "Confirmation de création de compte - Bank CDA";
-
 		String emailBody = "Bienvenue dans notre banque " + c.getName() + " " + c.getFirstName()
 				+ ".<br><br> Votre identifiant client est : <b>" + c.getIdClient()
 				+ "</b>. Votre nouveau compte bancaire sera disponible sous peu.";

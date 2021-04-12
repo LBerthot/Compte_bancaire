@@ -25,16 +25,18 @@ public class Client {
 
 	}
 
-	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon) throws MalformedURLException, AddressException, MessagingException {
+	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon)
+			throws MalformedURLException, AddressException, MessagingException {
 		this.name = name;
 		this.firstName = firstName;
 		this.birthDate = birthDate;
 		this.adress = adress;
 		this.email = email;
 		this.telephon = telephon;
-		idClient = name.substring(0, 1).toUpperCase() + firstName.substring(0, 1).toUpperCase() + Helpers.SetCode(limit);
-		//MailService mc = new MailService();
-		//mc.sendEmail(this);
+		idClient = name.substring(0, 1).toUpperCase() + firstName.substring(0, 1).toUpperCase()
+				+ Helpers.SetCode(limit);
+		MailService mc = new MailService();
+		mc.sendEmail(this);
 	}
 
 	public String getName() {
@@ -99,6 +101,7 @@ public class Client {
 
 	@Override
 	public String toString() {
-		return "\n	info client : \nNuméro client : " + this.idClient + "\nNom : " + this.name + "\nPrénom : " + this.firstName + "\nDate de naissance : " + this.birthDate;
+		return "\n	info client : \nNuméro client : " + this.idClient + "\nNom : " + this.name + "\nPrénom : "
+				+ this.firstName + "\nDate de naissance : " + this.birthDate;
 	}
 }

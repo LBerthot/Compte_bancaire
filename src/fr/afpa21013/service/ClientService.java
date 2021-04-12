@@ -20,22 +20,19 @@ public class ClientService {
 	public static Client[] clients;
 
 	public ClientService() {
-		// empty array to start
 	}
 
-	// singleton
 	public static ClientService getClientService() {
 		if (clientService == null) {
 			clientService = new ClientService();
 			clients = new Client[0];
-
 		}
 		return clientService;
 	}
 
 	public Client createClient() throws AddressException, MessagingException, MalformedURLException {
 		String name, firstName;
-		// boucle de test nom existe
+		// Test if the name exist
 		while (true) {
 			System.out.print("Nom du client : ");
 			name = Helpers.getScanner().nextLine();
@@ -44,7 +41,7 @@ public class ClientService {
 			if (this.searchClient(name + firstName, "name") == null && !firstName.equals("") && !name.equals("")) {
 				break;
 			}
-			System.out.println("Client deja cree ou champs non renseignés correctement !\n");
+			System.out.println("Client déja crée ou champs non renseignés correctement !\n");
 		}
 
 		Date birthDate = Helpers.testDateValid();
@@ -59,9 +56,6 @@ public class ClientService {
 		clients[clients.length - 1] = client;
 		System.out.println(
 				"\nLe client " + client.getName() + " " + client.getFirstName() + " a été créée avec succès.\n");
-		System.out.println(
-				"\nLa fonctionnalité d'envoie de mail étant momentanément indisponible, vous devez absolument noter votre identifiant client : "
-						+ client.getIdClient());
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return client;
 	}
@@ -90,21 +84,13 @@ public class ClientService {
 						return el;
 					}
 				}
-			} // accountId
+			}
 		}
 		return null;
 	}
-//
-//	listAccount = Helpers.redimArray(listAccount, 1);
-//	listAccount[listAccount.length -1] = bk;
 
 	private String ClientAccountToScreen(Client client) {
 		String res = "";
-		// BankAccount[] listAccount = new BankAccount[0];
-//		BankAccount[] accounts = new BankAccount[0];
-		// ts tableau récupérer les comptes du client (idclient)
-		// stocker ds un tableau
-
 		BankAccountService bankAccountService = BankAccountService.getAccountService();
 		String smiley = "";
 		res = "\n---- Liste des comptes du client-----\n "
@@ -112,18 +98,15 @@ public class ClientService {
 		for (BankAccount bk : BankAccountService.bankAccounts) {
 			if (bk.getClientCode().equals(client.getIdClient())) {
 				smiley = bk.getSold() > 0 ? ":-)" : bk.getSold() == 0 ? ":-/" : ":-(";
-				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() + "				" +
-				bk.getSold() + "				" + smiley + "\n";
+				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() + "				" + bk.getSold()
+						+ "				" + smiley + "\n";
 			}
 		}
 		System.out.println(res);
 		return res;
 	}
 
-	public void displayClientCountList() {// client ou id
-		// appel de pullClientAccount
-		// afficher
-
+	public void displayClientCountList() {
 		System.out.println("---- Liste des comptes du client-----\n ");
 		System.out.println("identifiant du client ?");
 		String idCli = Helpers.getScanner().nextLine();
@@ -132,30 +115,30 @@ public class ClientService {
 				ClientAccountToScreen(cl);
 			}
 		}
-
 	}
 
 	public String dislayClientInfo(Client client) {
-		String res="";
+		String res = "";
 		for (Client cl : clients) {
 			if (cl.getIdClient().equals(client.getIdClient())) {
 				res = client + "\n";
-				res += ClientAccountToScreen(cl); 
+				res += ClientAccountToScreen(cl);
 			}
 		}
 		return res;
 	}
+
 	public void printClientInfo(String clientInfos, Client client) {
-		// impression dans un fichier
+		// Save in a .text
 		String location = "./countinfos";
 		try {
-			PrintWriter fichier = new PrintWriter( new FileWriter(location+"/"+client.getName()+"."+ client.getIdClient()+".txt"));
+			PrintWriter fichier = new PrintWriter(
+					new FileWriter(location + "/" + client.getName() + "." + client.getIdClient() + ".txt"));
 			fichier.print(clientInfos);
 			fichier.close();
 			System.out.println("fichier correctement créé");
-		} catch (IOException e) {			
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

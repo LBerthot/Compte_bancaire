@@ -5,8 +5,8 @@ import java.util.Random;
 import fr.afpa21013.utils.Helpers;
 
 public class BankAccount {
-	
-	private final int  code = 11;
+
+	private final int code = 11;
 
 	private String idAccount;
 	private long agencyCode;
@@ -19,10 +19,9 @@ public class BankAccount {
 		this.idAccount = Helpers.SetCode(code);
 	}
 
-	public BankAccount(String agencyCode, String clientCode, boolean authorisedOverdraft,
-			String accountType) {
+	public BankAccount(String agencyCode, String clientCode, boolean authorisedOverdraft, String accountType) {
 		this.idAccount = Helpers.SetCode(code);
-		this.setClientCode(clientCode); // Use .getClientCode
+		this.setClientCode(clientCode);
 		this.setSold(generateAleat());
 		this.setAuthorisedOverdraft(authorisedOverdraft);
 		this.setAccountType(accountType);
@@ -39,7 +38,6 @@ public class BankAccount {
 		return idAccount;
 	}
 
-	
 	public String getClientCode() {
 		return clientCode;
 	}
@@ -75,9 +73,9 @@ public class BankAccount {
 	public void setClientCode(String clientCode) {
 		this.clientCode = clientCode;
 	}
-	
+
 	private double generateAleat() {
 		Random rd = new Random();
-		return 5000+ rd.nextDouble() *(10000+5000);
+		return 5000 + rd.nextDouble() * (10000 + 5000);
 	}
 }

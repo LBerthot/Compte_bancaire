@@ -21,7 +21,6 @@ public class AgencyService {
 
 	public Agency createAgency() {
 		System.out.println("\n-----Création d'une nouvelle agence-----\n");
-
 		System.out.print("Entrez l'adresse de la nouvelle agence : ");
 		String agencyAdress = Helpers.getScanner().nextLine();
 		System.out.print("Entrez le nom de la nouvelle agence : ");

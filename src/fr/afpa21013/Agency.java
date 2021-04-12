@@ -5,7 +5,7 @@ import fr.afpa21013.utils.Helpers;
 public class Agency {
 
 	private final int limit = 3;
-	
+
 	private String agencyCode;
 	private String agencyAdress;
 	private String agencyName;
@@ -15,9 +15,9 @@ public class Agency {
 	}
 
 	public Agency(String agencyAdress, String agencyName) {
-		this.agencyCode =  Helpers.SetCode(limit);
+		this.agencyCode = Helpers.SetCode(limit);
 		this.setAgencyAdress(agencyAdress);
-		this.setAgencyName(agencyName);		
+		this.setAgencyName(agencyName);
 	}
 
 	@Override
@@ -29,7 +29,6 @@ public class Agency {
 	public String getAgencyCode() {
 		return agencyCode;
 	}
-
 
 	public String getAgencyAdress() {
 		return agencyAdress;

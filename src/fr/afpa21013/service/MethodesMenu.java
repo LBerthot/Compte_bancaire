@@ -36,7 +36,8 @@ public class MethodesMenu {
 					baServe.createAccount();
 				} else {
 					System.out.println(
-							"Les conditions de création de comptes ne sont pas respecté : \n-Une agence doit exister. \n-Un client doit exister. \n-Le nombre de compte maximum qu'un client peut possèder est de 3");
+							"Les conditions de création de comptes ne sont pas respecté : \n-Une agence doit exister. "
+									+ "\n-Un client doit exister. \n-Le nombre de compte maximum qu'un client peut possèder est de 3");
 				}
 				break;
 
@@ -61,11 +62,11 @@ public class MethodesMenu {
 				String nameNrCount = Helpers.getScanner().nextLine();
 				Client client = clServe.searchClient(nameNrCount, "idCli");
 				String clientInfo = clServe.dislayClientInfo(client);
-				
+
 				System.out.print("\nSouhaitez-vous imprimer le récapitulatif ? (o/n)");
 				String print = Helpers.getScanner().nextLine().toUpperCase();
 				if (print.equals("O")) {
-					clServe.printClientInfo(clientInfo,client);
+					clServe.printClientInfo(clientInfo, client);
 				}
 				break;
 
@@ -109,7 +110,6 @@ public class MethodesMenu {
 		System.out.println("2- Numero de compte");
 		System.out.println("3- Identifiant client");
 		System.out.println("4- Retour au menu principal");
-
 		System.out.print("Votre choix :");
 
 		String nameNrCount = "";
