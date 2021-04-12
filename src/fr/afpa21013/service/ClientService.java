@@ -37,10 +37,10 @@ public class ClientService {
 			name = Helpers.getScanner().nextLine();
 			System.out.print("Prénom du client : ");
 			firstName = Helpers.getScanner().nextLine();
-			if (this.searchClient(name + firstName, "name") == null && firstName != "" && name != "") {
+			if (this.searchClient(name + firstName, "name") == null && !firstName.equals("") && !name.equals("")) {
 				break;
 			}
-			System.out.println("Client deja cree !\n");
+			System.out.println("Client deja cree ou champs non renseignés correctement !\n");
 		}
 
 		Date birthDate = Helpers.testDateValid();
