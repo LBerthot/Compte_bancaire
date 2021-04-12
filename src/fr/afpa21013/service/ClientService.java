@@ -53,8 +53,11 @@ public class ClientService {
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;
-		System.out.println("\nLe client " + client.getName() + " " +client.getFirstName() + " a été créée avec succès.\n");
-		System.out.println("\nLa fonctionnalité d'envoie de mail étant momentanément indisponible, vous devez absolument noter votre identifiant client : " + client.getIdClient());
+		System.out.println(
+				"\nLe client " + client.getName() + " " + client.getFirstName() + " a été créée avec succès.\n");
+		System.out.println(
+				"\nLa fonctionnalité d'envoie de mail étant momentanément indisponible, vous devez absolument noter votre identifiant client : "
+						+ client.getIdClient());
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return client;
 	}
