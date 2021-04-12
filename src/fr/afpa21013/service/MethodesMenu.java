@@ -61,7 +61,8 @@ public class MethodesMenu {
 				System.out.print("Entrez l'identifiant client : ");
 				String nameNrCount = Helpers.getScanner().nextLine();
 				Client client = clServe.searchClient(nameNrCount, "idCli");
-				clServe.printClientInfo(client);
+				System.out.println(clServe.dislayClientInfo(client));
+				// voulez-vous imprimer
 				break;
 
 			case "Q":
