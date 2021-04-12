@@ -60,7 +60,8 @@ public class MethodesMenu {
 				System.out.print("Entrez l'identifiant client : ");
 				String nameNrCount = Helpers.getScanner().nextLine();
 				Client client = clServe.searchClient(nameNrCount, "idCli");
-				System.out.println(clServe.dislayClientInfo(client));
+				String clientInfo = clServe.dislayClientInfo(client);
+				
 				System.out.print("\nSouhaitez-vous imprimer le récapitulatif ? (o/n)");
 				String print = Helpers.getScanner().nextLine().toUpperCase();
 				if (print.equals("O")) {
