@@ -21,7 +21,7 @@ import fr.afpa21013.Client;
 public class MailService {
 	private Session mailSession;
 	private Properties emailProperties;
-	public static MailService javaEmail;
+	//public static MailService javaEmail;
 
 	public MailService() throws MalformedURLException {
 

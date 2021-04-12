@@ -1,5 +1,7 @@
 package fr.afpa21013.service;
 
+import java.net.MalformedURLException;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
@@ -12,7 +14,7 @@ public class MethodesMenu {
 	ClientService clServe = ClientService.getClientService();
 	BankAccountService baServe = BankAccountService.getAccountService();
 
-	public void start() throws AddressException, MessagingException {
+	public void start() throws AddressException, MessagingException, MalformedURLException {
 		displayMenu();
 		boolean run = true;
 		do {

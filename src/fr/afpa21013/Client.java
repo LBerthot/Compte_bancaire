@@ -1,7 +1,12 @@
 package fr.afpa21013;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
+import fr.afpa21013.service.MailService;
 import fr.afpa21013.utils.Helpers;
 
 public class Client {
@@ -20,7 +25,7 @@ public class Client {
 
 	}
 
-	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon) {
+	public Client(String name, String firstName, String adress, Date birthDate, String email, String telephon) throws MalformedURLException, AddressException, MessagingException {
 		this.name = name;
 		this.firstName = firstName;
 		this.birthDate = birthDate;
@@ -28,6 +33,8 @@ public class Client {
 		this.email = email;
 		this.telephon = telephon;
 		idClient = name.substring(0, 1) + firstName.substring(0, 1) + Helpers.SetCode(limit);
+		//MailService mc = new MailService();
+		//mc.sendEmail(this);
 	}
 
 	public String getName() {

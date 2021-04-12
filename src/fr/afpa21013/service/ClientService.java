@@ -1,5 +1,6 @@
 package fr.afpa21013.service;
 
+import java.net.MalformedURLException;
 import java.util.Date;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
@@ -28,7 +29,7 @@ public class ClientService {
 		return clientService;
 	}
 
-	public Client createClient() throws AddressException, MessagingException {
+	public Client createClient() throws AddressException, MessagingException, MalformedURLException {
 		String name, firstName;
 		// boucle de test nom existe
 		while (true) {
@@ -50,9 +51,6 @@ public class ClientService {
 		System.out.print("telephone : ");
 		String telephon = Helpers.getScanner().nextLine();
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
-		
-		MailService.javaEmail.sendEmail(client);
-		
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;
 		System.out.println("\nLe client " + client.getName() + " " +client.getFirstName() + " a été créée avec succès.\n");
