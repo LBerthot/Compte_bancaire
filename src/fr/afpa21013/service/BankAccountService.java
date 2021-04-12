@@ -99,6 +99,7 @@ public class BankAccountService {
 			if(cont.getClientCode().equals(idCli)) {
 				if(typeCpt.equals("COURANT")) {
 					nbCptCourant++;	
+					return nbLivretA < 1 && typeCpt.equals("LIVRETA");
 				} else if(typeCpt.equals("PEL"))
 				{nbCpt++;}else {nbLivretA++;}
 				
