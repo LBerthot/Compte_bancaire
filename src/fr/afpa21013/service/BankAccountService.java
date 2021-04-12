@@ -24,6 +24,7 @@ public class BankAccountService {
 	public BankAccount createAccount() {
 		String clientId;
 		String accountType;
+		boolean overdraft = false;
 		// AgencyService agencyService =
 		ClientService cliServ = ClientService.getClientService();// pour acces methode searchClient
 		AgencyService agencyService = AgencyService.getAgencyService();
@@ -45,15 +46,17 @@ public class BankAccountService {
 		while (true) {
 			System.out.println ("Quel compte voulez vous créer (courant/livretA/pel : ");
 			accountType = Helpers.getScanner().nextLine().toUpperCase();
-			if (testTypeCompte(accountType)) {
+			if (testTypeCompte(accountType) && testNbCpt(clientId,accountType)) {
 				break;
 			}
-			System.out.println("Ce type de compte est inexistant..");
+			System.out.println("Ce type de compte est inexistant ou compte dépassant la limite autorisée ..");
+		}
+		if(!(accountType.equals("PEL") || accountType.equals("LIVRETA"))) {
+			System.out.println("Découver autorisé : o/n ");
+			String strOverdraft = Helpers.getScanner().nextLine().toUpperCase();
+			overdraft = strOverdraft.equals("O") ? true : false;			
 		}
 
-		System.out.println("Découver autorisé : o/n ");
-		String strOverdraft = Helpers.getScanner().nextLine().toUpperCase();
-		boolean overdraft = strOverdraft.equals("O") ? true : false;
 
 		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
 		Client client = cliServ.searchClient(clientId, "idCli");
@@ -89,4 +92,18 @@ public class BankAccountService {
 		return (typeAccount.equals("COURANT") || typeAccount.equals("LIVRETA") || typeAccount.equals("PEL"));
 	}
 
+	private boolean testNbCpt(String idCli,String typeCpt) {		
+		int nbCpt,nbCptCourant,nbLivretA;
+		nbCpt = nbCptCourant = nbLivretA =0;
+		for(BankAccount cont: bankAccounts) {
+			if(cont.getClientCode().equals(idCli)) {
+				if(typeCpt.equals("COURANT")) {
+					nbCptCourant++;	
+				} else if(typeCpt.equals("PEL"))
+				{nbCpt++;}else {nbLivretA++;}
+				
+			}
+		}
+		return !(nbLivretA >= 1 && typeCpt.equals("LIVRETA") || nbCpt >= 1 && typeCpt.equals("PEL") || typeCpt.equals("COURANT") && nbCptCourant >= 3);
+	}
 }

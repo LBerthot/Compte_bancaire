@@ -32,7 +32,7 @@ public class Client {
 		this.adress = adress;
 		this.email = email;
 		this.telephon = telephon;
-		idClient = name.substring(0, 1) + firstName.substring(0, 1) + Helpers.SetCode(limit);
+		idClient = name.substring(0, 1).toUpperCase() + firstName.substring(0, 1).toUpperCase() + Helpers.SetCode(limit);
 		//MailService mc = new MailService();
 		//mc.sendEmail(this);
 	}
