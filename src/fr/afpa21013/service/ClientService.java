@@ -2,6 +2,7 @@ package fr.afpa21013.service;
 
 import java.net.MalformedURLException;
 import java.util.Date;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
@@ -94,20 +95,26 @@ public class ClientService {
 //	listAccount = Helpers.redimArray(listAccount, 1);
 //	listAccount[listAccount.length -1] = bk;
 
-	private void ClientAccountToScreen(Client client) {
+	private String ClientAccountToScreen(Client client) {
 		String res = "";
 		// BankAccount[] listAccount = new BankAccount[0];
 //		BankAccount[] accounts = new BankAccount[0];
 		// ts tableau récupérer les comptes du client (idclient)
 		// stocker ds un tableau
+
 		BankAccountService bankAccountService = BankAccountService.getAccountService();
-		res = "Le client " + client.getName() + " possède ";
+		String smiley = "";
+		res = "\n---- Liste des comptes du client-----\n "
+				+ "\nNuméro de compte					Solde					\n";
 		for (BankAccount bk : BankAccountService.bankAccounts) {
 			if (bk.getClientCode().equals(client.getIdClient())) {
-				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() +"\n";
-			}			
+				smiley = bk.getSold() > 0 ? ":-)" : bk.getSold() == 0 ? ":-/" : ":-(";
+				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() + "				" + bk.getSold()
+						+ "				" + smiley + "\n";
+			}
 		}
 		System.out.println(res);
+		return res;
 	}
 
 	public void displayClientCountList() {// client ou id
@@ -125,14 +132,17 @@ public class ClientService {
 
 	}
 
-	public void printClientInfo(Client client) {
-		System.out.println(client);
-		System.out.println("\n---- Liste des comptes du client-----\n ");
+	public String dislayClientInfo(Client client) {
+		String res="";
 		for (Client cl : clients) {
 			if (cl.getIdClient().equals(client.getIdClient())) {
-				ClientAccountToScreen(cl);
+				res = client + "\n";
+				res += ClientAccountToScreen(cl); 
 			}
-			// impression dans un fichier
 		}
+		return res;
+	}
+	public void printClientInfo() {
+		// impression dans un fichier
 	}
 }

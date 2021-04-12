@@ -32,8 +32,7 @@ public class MethodesMenu {
 
 			case "3":
 				Helpers.clearScreen();
-				if (ClientService.clients.length > 0 && AgencyService.agencies.length > 0
-						&& BankAccountService.bankAccounts.length < 4) {
+				if (ClientService.clients.length > 0 && AgencyService.agencies.length > 0) {
 					baServe.createAccount();
 				} else {
 					System.out.println(
@@ -61,7 +60,12 @@ public class MethodesMenu {
 				System.out.print("Entrez l'identifiant client : ");
 				String nameNrCount = Helpers.getScanner().nextLine();
 				Client client = clServe.searchClient(nameNrCount, "idCli");
-				clServe.printClientInfo(client);
+				System.out.println(clServe.dislayClientInfo(client));
+				System.out.print("\nSouhaitez-vous imprimer le récapitulatif ? (o/n)");
+				String print = Helpers.getScanner().nextLine().toUpperCase();
+				if (print.equals("O")) {
+					clServe.printClientInfo();
+				}
 				break;
 
 			case "Q":
