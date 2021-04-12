@@ -32,8 +32,7 @@ public class MethodesMenu {
 
 			case "3":
 				Helpers.clearScreen();
-				if (ClientService.clients.length > 0 && AgencyService.agencies.length > 0
-						&& BankAccountService.bankAccounts.length < 4) {
+				if (ClientService.clients.length > 0 && AgencyService.agencies.length > 0) {
 					baServe.createAccount();
 				} else {
 					System.out.println(
