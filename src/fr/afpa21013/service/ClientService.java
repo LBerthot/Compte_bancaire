@@ -101,12 +101,11 @@ public class ClientService {
 		// ts tableau récupérer les comptes du client (idclient)
 		// stocker ds un tableau
 		BankAccountService bankAccountService = BankAccountService.getAccountService();
-		res = "Le client " + client.getName() + "possède\n";
+		res = "Le client " + client.getName() + " possède ";
 		for (BankAccount bk : BankAccountService.bankAccounts) {
-			if (bk.getIdAccount().equals(client.getIdAccount())) {
-				res = "Le compte " + bk.getAccountType() + " " + bk.getIdAccount();
-			}
-			System.out.println();
+			if (bk.getClientCode().equals(client.getIdClient())) {
+				res += "Le compte " + bk.getAccountType() + " " + bk.getIdAccount() +"\n";
+			}			
 		}
 		System.out.println(res);
 	}

@@ -37,6 +37,11 @@ public class BankAccount {
 		return idAccount;
 	}
 
+	
+	public String getClientCode() {
+		return clientCode;
+	}
+
 	public long getAgencyCode() {
 		return agencyCode;
 	}
