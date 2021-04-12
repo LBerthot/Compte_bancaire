@@ -51,7 +51,7 @@ public class ClientService {
 		String telephon = Helpers.getScanner().nextLine();
 		Client client = new Client(name, firstName, adress, birthDate, email, telephon);
 		
-		// MailService.javaEmail.sendEmail(client);
+		MailService.javaEmail.sendEmail(client);
 		
 		clients = Helpers.redimArray(clients, 1);
 		clients[clients.length - 1] = client;

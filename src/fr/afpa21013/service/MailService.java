@@ -28,7 +28,7 @@ public class MailService {
 		File file = new File("./config");
 		URL[] urls = { file.toURI().toURL() };
 		ClassLoader loader = new URLClassLoader(urls);
-		ResourceBundle bundle = ResourceBundle.getBundle("radar-config", Locale.getDefault(), loader);
+		ResourceBundle bundle = ResourceBundle.getBundle("bank-config", Locale.getDefault(), loader);
 
 		// ResourceBundle bundle = ResourceBundle.getBundle("baseName");
 
