@@ -44,19 +44,18 @@ public class BankAccountService {
 
 		}
 		while (true) {
-			System.out.println ("Quel compte voulez vous créer (courant/livretA/pel : ");
+			System.out.println("Quel compte voulez vous créer (courant/livretA/pel : ");
 			accountType = Helpers.getScanner().nextLine().toUpperCase();
-			if (testTypeCompte(accountType) && testNbCpt(clientId,accountType)) {
+			if (testTypeCompte(accountType) && (bankAccounts.length == 0 || testNbCpt(clientId, accountType))) {
 				break;
 			}
 			System.out.println("Ce type de compte est inexistant ou compte dépassant la limite autorisée ..");
 		}
-		if(!(accountType.equals("PEL") || accountType.equals("LIVRETA"))) {
+		if (!(accountType.equals("PEL") || accountType.equals("LIVRETA"))) {
 			System.out.println("Découver autorisé : o/n ");
 			String strOverdraft = Helpers.getScanner().nextLine().toUpperCase();
-			overdraft = strOverdraft.equals("O") ? true : false;			
+			overdraft = strOverdraft.equals("O") ? true : false;
 		}
-
 
 		BankAccount account = new BankAccount(agencyId, clientId, 0, overdraft, accountType);
 		Client client = cliServ.searchClient(clientId, "idCli");
@@ -66,7 +65,8 @@ public class BankAccountService {
 		bankAccounts[bankAccounts.length - 1] = account;
 
 		Helpers.clearScreen();
-		System.out.println("\nLe compte " + account.getAccountType() + " numéro "+ account.getIdAccount() + " a été créée avec succès.\n");
+		System.out.println("\nLe compte " + account.getAccountType() + " numéro " + account.getIdAccount()
+				+ " a été créée avec succès.\n");
 		System.out.println("\nAppuyer sur entrer pour retourner au menu principal...");
 		return account;
 	}
@@ -78,10 +78,12 @@ public class BankAccountService {
 			String accountId = Helpers.getScanner().nextLine();
 			for (BankAccount el : bankAccounts) {
 				if (el.getIdAccount().equals(accountId)) {
-					System.out.println("Le compte " + el.getAccountType() + " numéro " + el.getIdAccount() + " a un solde de " + el.getSold());
+					System.out.println("Le compte " + el.getAccountType() + " numéro " + el.getIdAccount()
+							+ " a un solde de " + el.getSold());
 					return el;
 				}
-			}System.out.println("Numero de compte invalide !");
+			}
+			System.out.println("Numero de compte invalide !");
 		} else {
 			System.out.println("compte inexistant !");
 		}
@@ -92,19 +94,28 @@ public class BankAccountService {
 		return (typeAccount.equals("COURANT") || typeAccount.equals("LIVRETA") || typeAccount.equals("PEL"));
 	}
 
-	private boolean testNbCpt(String idCli,String typeCpt) {		
-		int nbCpt,nbCptCourant,nbLivretA;
-		nbCpt = nbCptCourant = nbLivretA =0;
-		for(BankAccount cont: bankAccounts) {
-			if(cont.getClientCode().equals(idCli)) {
-				if(typeCpt.equals("COURANT")) {
-					nbCptCourant++;	
-					return nbLivretA < 1 && typeCpt.equals("LIVRETA");
-				} else if(typeCpt.equals("PEL"))
-				{nbCpt++;}else {nbLivretA++;}
-				
+	private boolean testNbCpt(String idCli, String typeCpt) {
+		int nbCpt, nbCptCourant, nbLivretA;
+		nbCpt = nbCptCourant = nbLivretA = 1;
+		boolean cheak = true;
+		for (BankAccount cont : bankAccounts) {
+			if (cont.getClientCode().equals(idCli)) {
+				if (typeCpt.equals("COURANT")) {
+					nbCptCourant++;
+				} else if (typeCpt.equals("PEL")) {
+					nbCpt++;
+				} else if (typeCpt.equals("LIVRETA")) {
+					nbLivretA++;
+				}
 			}
 		}
-		return !(nbLivretA >= 1 && typeCpt.equals("LIVRETA") || nbCpt >= 1 && typeCpt.equals("PEL") || typeCpt.equals("COURANT") && nbCptCourant >= 3);
+		if (nbCpt >= 1) {
+			cheak = false;
+		} else if (nbCptCourant >= 3) {
+			cheak = false;
+		} else if (nbLivretA >= 1) {
+			cheak = false;
+		}
+		return cheak;
 	}
 }
