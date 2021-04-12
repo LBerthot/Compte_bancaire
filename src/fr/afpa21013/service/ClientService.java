@@ -38,7 +38,7 @@ public class ClientService {
 			name = Helpers.getScanner().nextLine();
 			System.out.print("Prénom du client : ");
 			firstName = Helpers.getScanner().nextLine();
-			if (this.searchClient(name + firstName, "name") == null) {
+			if (this.searchClient(name + firstName, "name") == null && firstName != "" && name != "") {
 				break;
 			}
 			System.out.println("Client deja cree !\n");
